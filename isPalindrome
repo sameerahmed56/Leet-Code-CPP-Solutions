@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x < 0){
+            return false;
+        }
+        stringstream ss;
+        ss << x;
+        string str = ss.str();
+        int r = 0, l = str.length() - 1;
+        while(r <= l){
+            if(str[r] != str[l]){
+                return false;
+            }
+            r++;
+            l--;
+        }
+        return true;
+    }
+};

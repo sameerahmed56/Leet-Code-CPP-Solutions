@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        int res = 0;
+        int n = s.length();
+        
+        char arr[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+        for(int i = 0; i < n; i++){
+            if(i + 1 < s.length()){
+                if(value(s[i]) >= value(s[i + 1])){
+                    res += value(s[i]);
+                }
+                else{
+                    res = res + value(s[i+1]) - value(s[i]);
+                    i++;
+                }
+            }
+            else{
+                res += value(s[i]);
+            }
+        }
+        return res;
+    }
+
+public: 
+    int value(char r)
+    {
+        if (r == 'I')
+            return 1;
+        if (r == 'V')
+            return 5;
+        if (r == 'X')
+            return 10;
+        if (r == 'L')
+            return 50;
+        if (r == 'C')
+            return 100;
+        if (r == 'D')
+            return 500;
+        if (r == 'M')
+            return 1000;
+     
+        return -1;
+    }
+};

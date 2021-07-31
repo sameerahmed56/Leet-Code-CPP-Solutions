@@ -1,0 +1,18 @@
+#define MIN (-2147483648)
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        vector<int> sumArr;
+        int res = MIN, n = nums.size();
+        for(int i = 0; i < n; i++){
+            int sum = 0;
+            for(int j = i ; j <n;j++){
+                sum+= nums[j];
+                if(sum > res){
+                    res = sum;
+                }
+            }
+        }
+        return res;
+    }
+};

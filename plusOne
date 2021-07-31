@@ -4,35 +4,17 @@ public:
         int n = digits.size();
         int i = n - 1;
         vector<int> vect(digits.begin(), digits.end());
-        if(vect[i] == 9){
-            while(i >= 0){
-                if(i == 0){
-                    if(vect[i] == 9){
-                        vect[i] = 0;
-                        vect.insert(vect.begin(),1);
-                        return vect;
-                    }
-                    else{
-                        vect[i] = vect[i] + 1;
-                        return vect;
-                    }
-                }
-                else{
-                    if(vect[i] == 9){
-                        vect[i] = 0;
-                        i--;
-                    }
-                    else{
-                        vect[i] = vect[i] + 1;
-                        return vect;
-                    }
-                }
+        while(i >= 0){
+            if(vect[i] == 9){
+                    vect[i] = 0;
             }
+            else{
+                vect[i] = vect[i] + 1;
+                return vect;
+            }
+            i--;        
         }
-        else{
-            vect[i] = vect[i] + 1;
-            return vect;
-        }
+        vect.insert(vect.begin(),1);
         return vect;
     }
 };

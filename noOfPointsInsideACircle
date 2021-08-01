@@ -1,0 +1,27 @@
+class Solution {
+public: 
+    float distance(int x1, int y1, int x2, int y2)
+    {
+        // Calculating distance
+        return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2) * 1.0);
+    }
+public:
+    vector<int> countPoints(vector<vector<int>>& points, vector<vector<int>>& queries) {
+        int n = queries.size();
+        vector<int> answer(n, 0);
+        for(int i = 0; i < n; i++){
+            int xC = queries[i][0];
+            int yC = queries[i][1];
+            int r = queries[i][2];
+            for(int j = 0; j < points.size(); j++){
+                int xP = points[j][0];
+                int yP = points[j][1];
+                float d = distance(xC, yC, xP, yP);
+                if(d <= r){
+                    answer[i] = answer[i] + 1;
+                }
+            }
+        }
+        return answer;
+    }
+};

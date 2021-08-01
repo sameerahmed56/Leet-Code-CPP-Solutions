@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int tribonacci(int n) {
+        int f1 = 0, f2 = 1, f3 = 1, temp = 0, sum = 0;
+        if( n == 2 || n == 1){
+            return 1;
+        }
+        for(int i = 3; i <= n; i++){
+            sum = f1 + f2 + f3;
+            temp = f3;
+            f1 = f2;
+            f2 = f3;
+            f3 = sum;
+        }
+        return sum;tg
+    }
+};

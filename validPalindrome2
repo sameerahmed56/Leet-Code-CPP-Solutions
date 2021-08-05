@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int n = s.size();
+        int l = 0, r = n - 1;
+        while(l <= r){
+            if(s[l++] != s[r--])
+                return false;
+        }
+        return true;
+    }
+public:
+    bool validPalindrome(string s) {
+        int n = s.size();
+        int l = 0, r = n - 1;
+        while(l <= r){
+             if(s[l] != s[r]){
+                 bool a = isPalindrome(s.substr( l + 1, r - l ));
+                 bool b = false;
+                 if(!a){
+                      b = isPalindrome(s.substr(l, r  - l));
+                 }
+                 if(a || b )
+                     return true;
+                 else 
+                     return false;
+             }
+            else{
+                l++;
+                r--;
+            }
+        }
+        return true;
+    }
+};

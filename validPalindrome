@@ -9,12 +9,8 @@ public:
             else if(!isalnum(s[r]))
                 r--;
             else{
-                if(toupper(s[l]) != toupper(s[r]))
-                    return false;
-                else{
-                    l++;
-                    r--;
-                }       
+                if(toupper(s[l++]) != toupper(s[r--]))
+                    return false;      
             }
         }
         return true;

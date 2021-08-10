@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_set <int> intSet;
+        for(int data: nums){
+            if (intSet.find(data) == intSet.end())
+                intSet.insert(data);
+            else
+                return data;
+        }
+        return 0;
+    }
+};

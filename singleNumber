@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        unordered_set <int> intSet;
+        for(int data: nums){
+            if (intSet.find(data) == intSet.end())
+                intSet.insert(data);
+            else
+                intSet.erase(data);
+        }
+        unordered_set<int> :: iterator itr;
+        itr = intSet.begin();
+        return *itr;
+    }
+};

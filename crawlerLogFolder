@@ -1,6 +1,8 @@
 class Solution {
 public:
     int minOperations(vector<string>& logs) {
+        
+        //stack implementation
         stack <string> st;
         for(string c: logs){
             if(c == "../"){
@@ -17,5 +19,22 @@ public:
             }
         }
         return st.size();
+        
+        // faster solution but without stack
+        int steps = 0;
+        for(int i = 0; i < logs.size(); i++){
+            if(logs[i] == "../"){
+                if(steps > 0 )
+                    steps--;
+            }
+            else if(logs[i] == "./"){
+                continue;
+            }
+            else{
+                steps++;
+            }
+        }
+        return steps;
+        
     }
 };

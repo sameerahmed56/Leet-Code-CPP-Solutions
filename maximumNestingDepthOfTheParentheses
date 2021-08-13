@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int maxDepth(string s) {
+        int depth  = 0, max = 0;
+        for(int i = 0; i < s.size(); i++){
+            if(s[i] == '('){
+                depth++;
+                max = std::max(max, depth);
+            }
+            else if(s[i] == ')')
+                depth --;
+        }
+        return max;
+    }
+};

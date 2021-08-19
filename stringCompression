@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int pos = 0, n = chars.size();
+        for(int i = 0; i < n ; i++){
+            int j  = i;
+            while(j < n && chars[j] == chars[i]){
+                j++;
+            }
+            int count = j - i;
+            i = j - 1;
+            chars[pos] = chars[i];
+            pos++;
+            if(count > 1){
+                string val = to_string(count);
+                for(char c: val){
+                    chars[pos] = c;
+                    pos++;
+                }
+            }
+        }
+        return pos;
+    }
+};

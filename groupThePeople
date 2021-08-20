@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> groupThePeople(vector<int>& groupSizes) {
+        int n = groupSizes.size();
+        vector<vector<int>> vect;
+        vector <bool> visited(n, false);
+        for(int i = 0; i < n; i++){
+            if(visited[i])
+                continue;
+            vector <int> temp;
+            temp.push_back(i);
+            for(int j = i +1; j < n; j++){
+                if(temp.size() == groupSizes[i])
+                    break;
+                
+                if(!visited[j] && groupSizes[j] == groupSizes[i]){
+                    temp.push_back(j);
+                    visited[j] = true;
+                }
+            }
+            vect.push_back(temp);
+        }
+        return vect;
+    }
+};

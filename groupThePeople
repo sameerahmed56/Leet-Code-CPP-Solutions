@@ -23,3 +23,21 @@ public:
         return vect;
     }
 };
+
+
+//faster and better approach
+class Solution {
+public:
+    vector<vector<int>> groupThePeople(vector<int>& groupSizes) {
+        int n = groupSizes.size();
+        vector<vector<int>> vect, greedy(n + 1);
+        for(int i = 0; i < n; i++){
+            greedy[groupSizes[i]].push_back(i);
+            if(greedy[groupSizes[i]].size() == groupSizes[i]){
+                vect.push_back(greedy[groupSizes[i]]);
+                greedy[groupSizes[i]].resize(0);
+            }
+        }
+        return vect;
+    }
+};

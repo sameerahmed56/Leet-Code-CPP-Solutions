@@ -31,3 +31,25 @@ public:
         return q.size();
     }
 };
+
+
+//better approach
+class Solution {
+public:
+    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+        int n = sandwiches.size(), i = 0;
+        vector <int> stud_count (2,0);
+        for(int s: students)
+            stud_count[s]++;
+        
+        for(i = 0; i < n; i++){
+            if(stud_count[sandwiches[i]] > 0){
+                stud_count[sandwiches[i]]--;
+            }
+            else{
+                break;
+            }
+        }
+        return n- i;
+    }
+};

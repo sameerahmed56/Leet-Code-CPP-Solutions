@@ -1,0 +1,24 @@
+class Solution {
+    
+public:
+    int findTheWinner(int n, int k) {
+        vector <bool> visited(n,false);
+        int curr = 1;
+        for(int i=1;i<n;i++){
+            int l = k - 1;
+            while(true){
+                if( l == 0)
+                    break;
+                (curr + 1 > n) ? curr  = 1 :curr = curr + 1;
+                if(!visited[curr - 1]){
+                    l--;
+                }
+            }
+            visited[curr - 1] = true;
+            while(visited[curr - 1]){
+                (curr + 1 > n) ? curr  = 1 : curr = curr + 1;
+            }
+        }
+        return curr;
+    }
+};

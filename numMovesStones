@@ -1,0 +1,9 @@
+class Solution {
+public:
+    vector<int> numMovesStones(int a, int b, int c) {
+        vector<int> sor {a,b,c};
+        sort(sor.begin(), sor.end());
+        if(sor[2] - sor[0] <= 2) return {0,0};
+        return {min(sor[2] - sor[1], sor[1] - sor[0]) <= 2 ? 1 : 2 , sor[2] - sor[0] - 2};
+    }
+};

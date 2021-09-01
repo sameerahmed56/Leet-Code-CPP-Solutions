@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        short int ans = 0;
+        for(short int i = 0; i < nums.size() - 1; i++){
+            for(short int j = i + 1; j < nums.size(); j++){
+                if(nums[i] == nums[j])
+                    ans++;
+            }
+        }
+        return ans;
+    }
+};

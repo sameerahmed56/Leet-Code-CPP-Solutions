@@ -11,3 +11,16 @@ public:
         return ans;
     }
 };
+
+//On complexity
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        short int res = 0;
+        unordered_map<short int,short int> count;
+        for (int a: nums) {
+            res += count[a]++;
+        }
+        return res;
+    }
+};

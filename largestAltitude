@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int class Solution {
+public:
+    int largestAltitude(vector<int>& gain) {
+        short int maxHeight = 0, curr = 0;
+        for(short int i: gain){
+            curr += i;
+            maxHeight = max(maxHeight, curr);
+        }
+        return maxHeight;
+    }
+};(vector<int>& gain) {
+        short int maxHeight = 0, curr = 0;
+        for(short int i: gain){
+            curr += i;
+            maxHeight = max(maxHeight, curr);
+        }
+        return maxHeight;
+    }
+};

@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+        set <int> s1;
+        for(int i = 0; i < nums.size(); i++){
+            s1.insert(nums[i]);
+        }
+        auto itr  = s1.begin();
+        if(s1.size() >= 3){
+            for (int i = 0; i < (s1.size() - 3); i++){
+                itr++;
+            }
+        }
+        else{
+            itr = s1.end();
+            itr--;
+        }
+        return *itr;
+    }
+};

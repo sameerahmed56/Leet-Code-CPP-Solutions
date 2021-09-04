@@ -1,0 +1,18 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        vector <int> vect;
+        int index = 0;
+        for(int i: nums){
+            if( i == 0){
+                vect.insert(vect.begin(), 0);
+                index++;
+            }
+            else if(i == 1)
+                vect.insert(vect.begin() + index, 1);
+            else
+                vect.push_back(2);
+        }
+        nums = vect;
+    }
+};

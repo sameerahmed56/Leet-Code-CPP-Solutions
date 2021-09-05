@@ -16,3 +16,25 @@ public:
         nums = vect;
     }
 };
+
+// without using any other array
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        vector <int> vect;
+        int l = 0, r = nums.size() - 1, curr = 0;
+        while(curr <= r){
+            if(nums[curr] == 0){
+                swap(nums[curr], nums[l]);
+                l++;
+                curr++;
+            }
+            else if(nums[curr] == 2){
+                swap(nums[curr], nums[r]);
+                r--; 
+            }
+            else
+                curr++;
+        }
+    }
+};

@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxAscendingSum(vector<int>& nums) {
+        int n = nums.size(), curr = 0, ans = 0;
+        if(n == 1)
+            return nums[0];
+        
+        for(int i = 0; i < n - 1; i++){
+            if(nums[i] < nums[i + 1]){
+                curr += nums[i];
+            }
+            else{
+                curr += nums[i];
+                ans = std::max(curr, ans);
+                curr = 0;
+            }
+        }
+        curr += nums[n - 1];
+        ans = std::max(curr, ans);
+        return ans;
+    }
+};

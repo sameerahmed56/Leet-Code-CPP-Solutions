@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        set<int> container;
+        int prev_size  = 0;
+        for(int i: nums){
+            prev_size = container.size();
+            container.insert(i);
+            if(prev_size == container.size()){
+                return true;
+            }
+        }
+        return false;
+    }
+};

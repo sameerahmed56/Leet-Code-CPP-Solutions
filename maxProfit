@@ -13,3 +13,16 @@ public:
         return max(profit(prices, i, j), 0);
     }
 };
+
+//optimal solution
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size(), ans = 0, minStart = prices[0];
+        for(int i = 1; i < n; i++){
+            ans = max(prices[i] - minStart, ans);
+            minStart = min(prices[i], minStart);
+        }
+        return ans;
+    }
+};

@@ -1,0 +1,15 @@
+// recursive solution not accepted time limit exceeded
+class Solution {
+public:
+    int profit(vector<int>& prices, int l, int r){
+        if(l == r){
+            return 0;
+        }
+        return std::max({prices[r] - prices[l],profit(prices, l+1, r), profit(prices, l, r-1)});
+    }
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int i = 0, j = n- 1;
+        return max(profit(prices, i, j), 0);
+    }
+};

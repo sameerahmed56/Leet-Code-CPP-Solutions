@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //you can also remove this function as CPP has default gcd function
     int gcd(int a, int b){
         if(b == 0){
             return a;

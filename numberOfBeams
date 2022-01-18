@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int countSetBits(string binary){
+        int bitCount = 0;
+        for(char ch: binary){
+            if(ch == '1'){
+                bitCount++;
+            }
+        }
+        return bitCount;
+    }
+    int numberOfBeams(vector<string>& bank) {
+        int ans = 0, i = 0, n = bank.size(),count = 0, innerCount = 0;
+        while(i < n){
+            if(count == 0){
+                count = countSetBits(bank[i]);
+            }
+            if(count != 0){
+                while(i<n-1){
+                    innerCount = countSetBits(bank[i+1]);
+                    if(innerCount == 0){
+                        i++;
+                    }
+                    else{
+                        ans += innerCount * count;
+                        count = innerCount;
+                        break;
+                    }
+                } 
+                i++;
+            }
+            else{
+                i++;
+            }
+        }
+        return ans;
+    }
+};

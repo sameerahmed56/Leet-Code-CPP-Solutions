@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int minimumRefill(vector<int>& plants, int capacityA, int capacityB) {
+        int ans = 0, l = 0,r = plants.size() - 1, currA = capacityA, currB = capacityB;
+        while(l < r){
+            currA = currA - plants[l];
+            currB = currB - plants[r];
+            l++;
+            r--;
+            if(l >= r){
+                break;
+            }
+            if(currA < plants[l]){
+                currA = capacityA;
+                ans++;
+            }
+            if(currB < plants[r]){
+                currB = capacityB;
+                ans++;
+            }
+        }
+        if(l == r){
+            currA = std::max(currA,currB);
+            if(currA < plants[l]){
+                ans++;
+            }
+        }
+        return ans;
+    }
+};

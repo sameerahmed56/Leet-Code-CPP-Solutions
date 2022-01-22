@@ -1,0 +1,35 @@
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> ans;
+        int l = 0, r = 0, n = nums.size(), x = 0, y = 0;
+        while(l < n && nums[l] < 0){
+            l++;
+        }
+        r = l;
+        l = l - 1;
+        while(l >= 0 || r < n){
+            if(l>=0){
+                x = nums[l] * nums[l];
+            }
+            else{
+                x = INT_MAX;
+            }
+            if(r<n){
+                y = nums[r] * nums[r];
+            }
+            else{
+                y = INT_MAX;
+            }
+            if(x <= y){
+                ans.push_back(x);
+                l--;
+            }
+            else{
+                ans.push_back(y);
+                r++;
+            }
+        }
+        return ans;
+    }
+};

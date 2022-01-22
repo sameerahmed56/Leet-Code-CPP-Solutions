@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> addToArrayForm(vector<int>& num, int k) {
+        vector <int> ans;
+        int sum = 0, carry = 0, n = num.size(),i = n - 1;
+        while(i >= 0 || k != 0){
+            int x = i >= 0 ? num[i] : 0; 
+            sum = carry + x + k%10;
+            k = k / 10;
+            carry = sum / 10;
+            ans.insert(ans.begin(),sum%10);
+            i--;
+        }
+        if(carry > 0){
+            ans.insert(ans.begin(),carry);
+        }
+        return ans;
+    }
+};

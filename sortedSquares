@@ -33,3 +33,25 @@ public:
         return ans;
     }
 };
+
+// better approach
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int i = 0,j = nums.size()-1;
+        vector<int> result(j+1);
+        int k = j;
+        while(i<=j){
+            int a = nums[i]*nums[i],b = nums[j]*nums[j];
+            if(b>=a){
+                result[k--] = b;
+                j--;
+            }
+            else {
+                result[k--] = a;
+                i++;
+            }
+        }    
+        return result;
+    }
+};

@@ -10,7 +10,7 @@ public:
             std::fill(box.begin(), box.end(),false);
             int innerCount = 0;
             for(int j = 0; j < 9; j++){
-                if(isdigit(board[i][j])){
+                if(board[i][j] != '.'){
                     if(row[(int)board[i][j] - 48]){
                         return false;
                     }
@@ -18,7 +18,7 @@ public:
                         row[(int)board[i][j] - 48] = true;
                     }
                 }
-                if(isdigit(board[j][i])){
+                if(board[j][i] != '.'){
                     if(col[(int)board[j][i] - 48]){
                         return false;
                     }
@@ -28,7 +28,7 @@ public:
                 }
                 int k =  3*(i%3) + j%3;
                 int l = 3*(i/3) + innerCount/3;
-                if(isdigit(board[k][l])){
+                if(board[k][l] != '.'){
                     if(box[(int)board[k][l] - 48]){
                         return false;
                     }

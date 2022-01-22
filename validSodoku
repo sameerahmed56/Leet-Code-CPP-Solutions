@@ -1,0 +1,45 @@
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        vector<bool> row(10);
+        vector<bool> col(10);
+        vector<bool> box(10);
+        for(int i = 0; i < 9; i++){
+            std::fill(row.begin(), row.end(),false);
+            std::fill(col.begin(), col.end(),false);
+            std::fill(box.begin(), box.end(),false);
+            int innerCount = 0;
+            for(int j = 0; j < 9; j++){
+                if(isdigit(board[i][j])){
+                    if(row[(int)board[i][j] - 48]){
+                        return false;
+                    }
+                    else{
+                        row[(int)board[i][j] - 48] = true;
+                    }
+                }
+                if(isdigit(board[j][i])){
+                    if(col[(int)board[j][i] - 48]){
+                        return false;
+                    }
+                    else{
+                        col[(int)board[j][i] - 48] = true;
+                    }
+                }
+                int k =  3*(i%3) + j%3;
+                int l = 3*(i/3) + innerCount/3;
+                if(isdigit(board[k][l])){
+                    if(box[(int)board[k][l] - 48]){
+                        return false;
+                    }
+                    else{
+                        box[(int)board[k][l] - 48] = true;
+                    }
+                }
+                innerCount++;
+                
+            }
+        }
+        return true;
+    }
+};

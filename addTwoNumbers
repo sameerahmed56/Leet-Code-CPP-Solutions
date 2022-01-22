@@ -1,71 +1,64 @@
 class Solution {
 public:
+    ListNode* add(ListNode* l1, ListNode* l2, ListNode* ans, ListNode* head, int& carry) {
+        int sum = carry;
+        carry = 0;
+        if(l1 != nullptr){
+            sum += l1 -> val;
+        }
+        if(l2 !=nullptr){
+            sum += l2 -> val;
+        }
+        if(sum > 9){
+                carry = 1;
+                sum = sum % 10;
+        }
+        ListNode* newNode;
+        newNode = new ListNode();
+        newNode -> val = sum;
+        if(ans -> val >= 0 ){
+            ans -> next = newNode;
+            ans = ans -> next;  
+        }
+        else{
+            ans =  newNode;
+        }
+        return ans;
+    }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode* ans = nullptr;
         ListNode* head = nullptr;
+        int count = 0;
         ans = new ListNode();
         ans -> val = -1;
         int carry = 0, sum = 0;
         while(l1 != nullptr && l2 != nullptr){
-            sum = l1 -> val + l2 -> val + carry;
-            carry = 0;
-            
-            ListNode* newNode;
-            newNode = new ListNode();
-            newNode -> val = sum;
-            if(ans -> val != -1 ){
-                ans -> next = newNode;
-                ans = ans -> next;  
-            }
-            else{
-                ans =  newNode;
+            count++;
+            ans = add(l1,l2,ans,head,carry);
+            if(count == 1){
                 head = ans;
             }
             l1 = l1 -> next;
             l2 = l2 -> next;
         }
-        if(l1 != nullptr){
-            while(l1 != nullptr){
-                sum = l1 -> val + carry;
-                carry = 0;
-                if(sum > 9){
-                    carry = 1;
-                    sum = sum % 10;
-                }
-                ListNode* newNode;
-                newNode = new ListNode();
-                newNode -> val = sum;
-                if(ans -> val != -1 ){
-                ans -> next = newNode;
-                ans = ans -> next;  
-                }
-                else{
-                    ans =  newNode;
+        if(l2 != nullptr){
+            while(l2 != nullptr){
+                count++;
+                ans = add(nullptr,l2,ans,head,carry);
+                if(count == 1){
                     head = ans;
                 }
-                l1 = l1 -> next;
+                l2 = l2 -> next;    
             }
         }
-        else{
-            while(l2 != nullptr){
-                sum = l2 -> val + carry;
-                carry = 0;
-                if(sum > 9){
-                    carry = 1;
-                    sum = sum % 10;
-                }
-                ListNode* newNode;
-                newNode = new ListNode();
-                newNode -> val = sum;
-                if(ans -> val != -1 ){
-                    ans -> next = newNode;
-                    ans = ans -> next;  
-                }
-                else{
-                    ans =  newNode;
+        if(l1 != nullptr){
+            while(l1 != nullptr){
+                count++;
+                ans = add(l1,nullptr,ans,head,carry);
+                if(count == 1){
                     head = ans;
                 }
-                l2 = l2 -> next;
+                l1 = l1 -> next;    
             }
         }
         if(carry != 0){

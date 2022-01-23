@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        unordered_map<char, int> umap;
+        int n = s.size();
+        for(int i =0; i<n; i++){
+            if (umap.find(s[i]) == umap.end()){
+                umap[s[i]] = 1;
+            }
+            else{
+                umap[s[i]] = umap[s[i]] + 1;
+            }
+        }
+        for(int i =0; i<n; i++){
+            if (umap[s[i]] == 1){
+                return i;
+            }
+        }
+        return -1;
+    }
+};

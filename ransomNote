@@ -19,3 +19,24 @@ public:
         return true;
     }
 };
+// faster but extra space
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int n = ransomNote.size(), m = magazine.size();
+        int ran[26]={0};
+        int mag[26]={0};
+        for(int i = 0; i < n; i++){
+            ran[ransomNote[i]-'a']++;
+        }
+        for(int j = 0; j < m; j++){
+            mag[magazine[j]-'a']++;
+        }
+        for(int k = 0; k < 26; k++){
+            if(ran[k] > mag[k]){
+                return false;
+            }
+        }
+        return true;
+    }
+};

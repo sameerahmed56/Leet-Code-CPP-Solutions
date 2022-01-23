@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int nthUglyNumber(int n) {
+        vector<long int> ans{1,2,3,4};
+        if(n <= 4){
+            return ans[n-1];
+        }
+        int curr = 0;
+        for(int i = 4; i < n; i++){
+            if(ans[curr]*5 <= ans[i-1]){
+                curr++;
+            }
+            long int temp = INT_MAX, count = 0;
+            while(true){
+                if(ans[curr+count]*2 > ans[i-1]){
+                    temp = min(temp,ans[curr+count]*2);
+                }
+                if(ans[curr+count]*3 > ans[i-1]){
+                    temp = min(temp,ans[curr+count]*3);
+                }
+                if(ans[curr+count]*5 > ans[i-1]){
+                    temp = min(temp,ans[curr+count]*5);
+                }
+                if(ans[curr+count]*2 > temp){
+                    break;
+                }
+                count++;
+            }
+            ans.push_back(temp);
+        }
+        return ans[n-1];
+    }
+};

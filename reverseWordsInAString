@@ -5,11 +5,10 @@ public:
         int n=s.size();
         for(int i=n-1;i>=0;i--){
             if(s[i] != ' '){ 
-                str = str + s[i];
+                str = s[i] + str;
             }
             else{
                 if(str != ""){
-                    reverse(str.begin(),str.end());
                     if(ans != ""){
                         ans =  ans + " " + str;
                         str = "";
@@ -22,7 +21,6 @@ public:
             }
         }
         if(str != ""){
-            reverse(str.begin(),str.end());
             if(ans != ""){
                 ans =  ans + " " + str;
             }

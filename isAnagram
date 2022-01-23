@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        int sArr[26]={0};
+        int tArr[26]={0};
+        for(char cs: s){
+            sArr[cs-'a']++;
+        }
+        for(char ct: t){
+            tArr[ct-'a']++;
+        }
+        for(int k = 0; k < 26; k++){
+            if(sArr[k] != tArr[k]){
+                return false;
+            }
+        }
+        return true;
+    }
+};

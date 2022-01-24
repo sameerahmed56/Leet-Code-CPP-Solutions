@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string convert(string str){
+        if(str.size()==1){
+            return "11";
+        }
+        char c = str[0];
+        string ans = "";
+        int n = str.size(), len = 1,i;
+        for(i = 1; i < n; i++){
+            if(str[i] == c){
+                len++;
+            }
+            else{
+                ans = ans +  to_string(len) + c;
+                c = str[i];
+                len = 1;
+            }
+        }
+        ans = ans +  to_string(len) + c; 
+        return ans; 
+    }
+    string countAndSay(int n) {
+        string str  = "1";
+        for(int i = 1; i < n; i++){
+            str = convert(str);
+        }
+        return str;
+    }
+};

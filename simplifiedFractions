@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<string> simplifiedFractions(int n) {
+        vector<string> ans;
+        unordered_set <float> st;
+        for(int b = 1; b <=n; b++){
+            for(int t = 1; t < b; t++){
+                float div  = (float)t/b;
+                if (st.find(div) == st.end()) {
+                    st.insert((float)t/b);
+                    ans.push_back(to_string(t) + "/" + to_string(b));
+                }
+            }
+        }
+        return ans;
+    }
+};

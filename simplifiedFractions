@@ -15,3 +15,20 @@ public:
         return ans;
     }
 };
+
+// using gcd instead of set 
+class Solution {
+public:
+    vector<string> simplifiedFractions(int n) {
+        vector<string> ans;
+        for(int b = 1; b <=n; b++){
+            for(int t = 1; t < b; t++){
+                float div  = (float)t/b;
+                if (gcd(t,b) == 1) {
+                    ans.push_back(to_string(t) + "/" + to_string(b));
+                }
+            }
+        }
+        return ans;
+    }
+};

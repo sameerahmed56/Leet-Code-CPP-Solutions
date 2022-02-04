@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool preorderTraversal(TreeNode* p, TreeNode* q){
+        if(p==nullptr && q==nullptr)
+            return true;
+        if(p==nullptr && q!=nullptr)
+            return false;
+        if(p!=nullptr && q==nullptr)
+            return false;
+        
+        if(p->val!=q->val){
+            return false;
+        }
+        return preorderTraversal(p->left,q->left) && preorderTraversal(p->right,q->right);
+    }
+    
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        return preorderTraversal(p,q);
+    }
+};

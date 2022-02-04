@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int getDepth(TreeNode* root,int depth){
+        if(root==nullptr){
+            return INT_MAX;
+        }
+        if(root->left==nullptr && root->right==nullptr){
+            return depth;
+        }
+        return min(getDepth(root->left,depth+1),getDepth(root->right,depth+1));
+    }
+    int minDepth(TreeNode* root) {
+        if(root==nullptr)
+            return 0;
+        return getDepth(root,1);
+    }
+};

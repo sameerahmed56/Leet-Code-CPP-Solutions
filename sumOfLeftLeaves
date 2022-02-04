@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int leftLeaves(TreeNode* root, bool isLeft){
+        if(root==nullptr)
+            return 0;
+        
+        if(root->left==nullptr && root->right==nullptr && isLeft)
+            return root->val;
+        
+        return leftLeaves(root->left,true)+leftLeaves(root->right,false);
+    }
+    int sumOfLeftLeaves(TreeNode* root) {
+        if(root==nullptr)
+            return 0;
+        return leftLeaves(root,false);
+    }
+};

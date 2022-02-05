@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int treePath(TreeNode* root, int sum, string s){
+        if(root==nullptr)
+            return 0;
+        s+= to_string(root->val);        
+        if(root->left==nullptr&&root->right==nullptr){
+            return sum += stoi(s, 0, 2);
+        }
+        return treePath(root->left,sum,s) + treePath(root->right,sum,s);
+    }
+    int sumRootToLeaf(TreeNode* root) {
+      return treePath(root,0,"");  
+    }
+};

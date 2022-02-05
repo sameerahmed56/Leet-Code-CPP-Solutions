@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<double> ans;
+    vector<int> count;
+    void levelAverage(TreeNode* root, int level){
+        if(root == nullptr)
+            return;
+        if(ans.size() > level){
+            ans[level] += root->val;
+            count[level] += 1;
+        }
+        else{
+            count.push_back(1);
+            ans.push_back(root->val);
+        }
+        levelAverage(root->left,level+1);
+        levelAverage(root->right,level+1);
+    }
+    vector<double> averageOfLevels(TreeNode* root) {
+        levelAverage(root,0);
+        for(int i =0;i<count.size();i++){
+            ans[i] = ans[i]/count[i];
+        }
+        return ans;
+    }
+};

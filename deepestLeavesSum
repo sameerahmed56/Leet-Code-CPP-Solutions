@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int sum = 0, maxLevel = 0;
+    void leavesSum(TreeNode* root, int level){
+        if(root==nullptr)
+            return;
+        if(level==maxLevel){
+            sum+=root->val;
+        }
+        if(level>maxLevel){
+            sum=root->val;
+            maxLevel = level;
+        }
+        leavesSum(root->left,level+1);
+        leavesSum(root->right,level+1);
+    }
+    int deepestLeavesSum(TreeNode* root) {
+        leavesSum(root,0);
+        return sum;
+    }
+};

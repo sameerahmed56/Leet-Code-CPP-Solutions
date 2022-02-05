@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int s1Sum = 0,s2Sum = 0;
+    string leftTraversal(TreeNode* root, int x){
+        if(root==nullptr)
+            return "";
+        if(root->left==nullptr&&root->right==nullptr){
+            if(x==0){
+                s1Sum+=root->val;
+            }
+            else{
+                s2Sum+=root->val;
+            }
+            return to_string(root->val);
+        }
+        return leftTraversal(root->left,x)+leftTraversal(root->right,x);
+    }
+    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        if(root1==nullptr)
+            return true;
+        string s1 = leftTraversal(root1,0);
+        string s2 = leftTraversal(root2,1);
+        cout << s1 << " " << s2;
+        return s1==s2 && s1Sum==s2Sum;
+    }
+};

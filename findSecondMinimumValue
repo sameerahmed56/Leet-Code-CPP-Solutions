@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int second=INT_MAX, first=INT_MAX;
+    bool isUpdate = false;
+    void secondMinimun(TreeNode* root){
+        if(root==nullptr)
+            return;
+        if(root->val<first){
+            second = first;
+            first = root->val;
+        }
+        if(root->val <= second && root->val > first){
+            isUpdate = true;
+            second = root->val;
+        }
+        secondMinimun(root->left);
+        secondMinimun(root->right);
+    }
+    int findSecondMinimumValue(TreeNode* root) {
+        secondMinimun(root);
+        return isUpdate ? second : -1;
+    }
+};

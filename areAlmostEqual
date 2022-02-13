@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool areAlmostEqual(string s, string goal) {
+        if(s.size() != goal.size()){
+            return false;
+        }
+        int n = s.size(), swaps = 0;
+        vector<int> sArr(27,0);
+        vector<int> goalArr(27,0); 
+        for(int i=0;i<n;i++){
+            sArr[s[i] -'a']++;
+            goalArr[goal[i] -'a']++;
+            if(s[i] != goal[i])
+                swaps++;
+        }
+        for(int i=0;i<27;i++){
+            if(sArr[i] != goalArr[i]){
+                return false;
+            }
+        }
+        return swaps <= 2;
+    }
+};

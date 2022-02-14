@@ -1,0 +1,34 @@
+class Solution {
+public:
+    bool winnerOfGame(string colors) {
+        int count = 0, conACount = 0, conBCount = 0;
+        for(char c: colors){
+            if(c=='A')
+                count++;
+            else{
+                if(count>=3){
+                    conACount += count-2;
+                }
+                count= 0;
+            }   
+        }
+        if(count>=3){
+            conACount += count-2;
+        }
+        count=0;
+        for(char c: colors){
+            if(c=='B')
+                count++;
+            else{
+                if(count>=3){
+                    conBCount += count-2;
+                }
+                count= 0;
+            }
+        }
+        if(count>=3){
+            conBCount += count-2;
+        }
+        return conACount>conBCount;
+    }
+};

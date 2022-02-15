@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int count = 0;
+        bool hasDouble = false;
+        int current  = nums[0];
+            for(int i = 1;i<nums.size();i++){
+                if(nums[i] == current){
+                    hasDouble = true;
+                }
+                else{
+                    nums[count++] = current;
+                    if(hasDouble){
+                        nums[count++] = current;
+                    }
+                    current = nums[i];
+                    hasDouble =false;                
+                }
+            }
+        nums[count] = current;
+        if(hasDouble){
+            count++;
+            nums[count] = current;
+        }
+        return count + 1;
+    }
+};

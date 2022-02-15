@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        vector<int> ans;
+        unordered_map<int, int> umap;
+        for(int i: nums){
+            if(umap.find(i) != umap.end()){
+                umap[i]++;
+            }
+            else{
+                umap[i] = 1;
+            }
+        }
+        int maxCount = 0;
+        for (auto itr = umap.begin(); itr != umap.end(); itr++){
+            if(itr->second > (nums.size())/3){
+                ans.push_back(itr->first);
+            }
+        }
+        return ans;
+    }
+};

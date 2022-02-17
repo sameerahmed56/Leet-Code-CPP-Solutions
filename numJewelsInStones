@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+        int ans = 0;
+        for(char cS: stones){
+            for(char jS: jewels){
+                if(cS == jS){
+                    ans++;
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+};

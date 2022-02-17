@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int pairSum(ListNode* head) {
+        int ans = 0,count = 0;
+        ListNode* fast = head;
+        ListNode* slow = head;
+        vector<int> valArr;
+        while(fast != nullptr){
+            valArr.push_back(slow->val);
+            fast = fast->next->next;
+            slow=slow->next;
+            count++;
+        }
+        count--;
+        while(slow != nullptr){
+            valArr[count] += slow->val;
+            slow = slow->next;
+            ans = max(ans,valArr[count]);
+            count--;
+        }
+        return ans;
+    }
+};

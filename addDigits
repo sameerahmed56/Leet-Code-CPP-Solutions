@@ -13,3 +13,10 @@ public:
         return num;
     }
 };
+//O(1) soln
+class Solution {
+public:
+    int addDigits(int num) {
+        return 1 + (num - 1) % 9;
+    }
+};

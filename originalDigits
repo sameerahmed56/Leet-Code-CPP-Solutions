@@ -43,6 +43,49 @@ public:
         return ans;
     }
 };
+
+// using a int array instead of map
+class Solution {
+public:
+    void reduceCharacter(vector<int> &mp, string arr, int count){
+        for(char c: arr){
+            mp[c-'a'] -= count;
+        }
+    }
+    string originalDigits(string s) {
+        vector<int> mp(26,0);
+        string ans = "";
+        for(char c: s){
+            mp[c-'a']++;
+        }
+        vector<int> numArr(10,0);
+        numArr[0] = mp['z'-'a'];
+        reduceCharacter(mp,"zero",mp['z'-'a']);
+        numArr[2] = mp['w'-'a'];
+        reduceCharacter(mp,"two",mp['w'-'a']);
+        numArr[6] = mp['x'-'a'];
+        reduceCharacter(mp,"six",mp['x'-'a']);
+        numArr[8] = mp['g'-'a'];
+        reduceCharacter(mp,"eight",mp['g'-'a']);
+        numArr[4] = mp['u'-'a'];
+        reduceCharacter(mp,"four",mp['u'-'a']);
+        numArr[5] = mp['f'-'a'];
+        reduceCharacter(mp,"five",mp['f'-'a']);
+        numArr[7] = mp['v'-'a'];
+        reduceCharacter(mp,"seven",mp['v'-'a']);
+        numArr[3] = mp['h'-'a'];
+        reduceCharacter(mp,"three",mp['h'-'a']);
+        numArr[1] = mp['o'-'a'];
+        reduceCharacter(mp,"one",mp['o'-'a']);
+        numArr[9] = mp['i'-'a'];
+        reduceCharacter(mp,"nine",mp['i'-'a']);
+        for(int i = 0;  i<= 9; i++){
+            string temp(numArr[i], i+'0');
+            ans+= temp;
+        }
+        return ans;
+    }
+};
 // zero    Z
 // one     N
 // two     W

@@ -1,0 +1,16 @@
+class Solution {
+public:
+    double angleClock(int hour, int minutes) {
+        double ans = 0;
+        double hourPos = (hour%12)*30, minPos = minutes*6;
+        double minFrac = minPos/360;
+        hourPos += minFrac*30;
+        if(minPos >= hourPos){
+            ans = minPos-hourPos;
+        }
+        else{
+            ans = hourPos-minPos;
+        }
+        return ans <= 180 ? ans : 360-ans;
+    }
+};

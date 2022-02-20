@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums2.size();
+        vector<int> ans;
+        for(int curr: nums1){
+            int i = 0;
+            while(nums2[i] != curr){
+                i++;
+            }
+            while(i<n && nums2[i] <= curr){
+                i++;
+            }
+            int toPush = i < n ? nums2[i] : -1;
+            ans.push_back(toPush);
+        }
+        return ans;
+    }
+};

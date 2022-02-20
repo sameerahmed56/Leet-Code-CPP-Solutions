@@ -1,0 +1,57 @@
+class Solution {
+public:
+    void reduceCharacter(map<char, int> &mp, string arr, int count){
+        for(char c: arr){
+            mp[c] -= count;
+        }
+    }
+    string originalDigits(string s) {
+        map<char, int> mp;
+        string ans = "";
+        char arr[] = {'e','g','f','i','h','o','n','s','r','u','t','w','v','x','z'};
+        for(char c: arr){
+            mp.insert(pair<char, int>(c, 0));
+        }
+        for(char c: s){
+            mp[c]++;
+        }
+        vector<int> numArr(10,0);
+        numArr[0] = mp['z'];
+        reduceCharacter(mp,"zero",mp['z']);
+        numArr[2] = mp['w'];
+        reduceCharacter(mp,"two",mp['w']);
+        numArr[6] = mp['x'];
+        reduceCharacter(mp,"six",mp['x']);
+        numArr[8] = mp['g'];
+        reduceCharacter(mp,"eight",mp['g']);
+        numArr[4] = mp['u'];
+        reduceCharacter(mp,"four",mp['u']);
+        numArr[5] = mp['f'];
+        reduceCharacter(mp,"five",mp['f']);
+        numArr[7] = mp['v'];
+        reduceCharacter(mp,"seven",mp['v']);
+        numArr[3] = mp['h'];
+        reduceCharacter(mp,"three",mp['h']);
+        numArr[1] = mp['o'];
+        reduceCharacter(mp,"one",mp['o']);
+        numArr[9] = mp['i'];
+        reduceCharacter(mp,"nine",mp['i']);
+        for(int i = 0;  i<= 9; i++){
+            string temp(numArr[i], i+'0');
+            ans+= temp;
+        }
+        return ans;
+    }
+};
+// zero    Z
+// one     N
+// two     W
+// three   R
+// four    U
+// five    V
+// six     X
+// seven   V
+// eight   G
+// nine    N
+
+// 0 Z -> 2 W -> 6 X -> 8 G -> 4 U -> 5 F -> 7 V -> 3 H -> 1 O -> 9 I

@@ -10,3 +10,10 @@ public:
         return ans;
     }
 };
+// one line soln
+class Solution {
+public:
+    int minOperations(int n) {
+        return n*n/4;
+    }
+};

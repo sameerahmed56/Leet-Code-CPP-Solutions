@@ -1,0 +1,13 @@
+class Solution {
+public:
+    string convertToTitle(int col) {
+        string ans;
+        while(col > 0) {
+            col--;
+            int curr = col % 26;
+            col = col / 26;
+            ans = (char)(curr + 'A') + ans;
+        }
+        return ans;
+    }
+};

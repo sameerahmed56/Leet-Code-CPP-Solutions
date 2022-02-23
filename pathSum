@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int ans = 0;
+    void pathSum(TreeNode* root, int sum){
+        if(root==NULL){
+            return;
+        } 
+        sum = sum*10 + root->val;
+        if(root -> left == NULL && root -> right == NULL){
+            ans+= sum;
+        }
+        if(root -> left != NULL){
+            pathSum(root->left, sum);
+        }
+        if(root -> right != NULL){
+            pathSum(root->right, sum);
+        }
+    }
+    int sumNumbers(TreeNode* root) {
+        pathSum(root, 0);
+        return ans;
+    }
+};

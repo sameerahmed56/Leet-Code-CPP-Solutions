@@ -1,7 +1,6 @@
 class Solution {
 public:
-    int ans = 0;
-    void pathSum(TreeNode* root, int sum){
+    void pathSum(TreeNode* root, int sum, int &ans){
         if(root==NULL){
             return;
         } 
@@ -10,14 +9,15 @@ public:
             ans+= sum;
         }
         if(root -> left != NULL){
-            pathSum(root->left, sum);
+            pathSum(root->left, sum, ans);
         }
         if(root -> right != NULL){
-            pathSum(root->right, sum);
+            pathSum(root->right, sum, ans);
         }
     }
     int sumNumbers(TreeNode* root) {
-        pathSum(root, 0);
+        int ans = 0;
+        pathSum(root, 0, ans);
         return ans;
     }
 };

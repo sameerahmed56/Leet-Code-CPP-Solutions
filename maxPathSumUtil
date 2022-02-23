@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int maxPathSumUtil(TreeNode* root, int &ans) {
+        if(root == NULL) return 0;
+        int left = maxPathSumUtil(root->left, ans);
+        int right = maxPathSumUtil(root->right, ans);
+        int nodeMax = max({
+            root->val,
+            root->val+left+right,
+            root->val+right,
+            root->val+left,
+        });
+        ans = max(nodeMax,ans);
+        int singlePathSum = max({
+            root->val,
+            root->val+right,
+            root->val+left,
+        });
+        return singlePathSum;
+    }
+    int maxPathSum(TreeNode* root) {
+        int ans = INT_MIN;
+        int a  = maxPathSumUtil(root,ans);
+        return ans;
+    }
+};

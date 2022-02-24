@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<vector<int>> findFarmland(vector<vector<int>>& land) {
+        int m = land.size(), n = land[0].size();
+        vector<vector<int>> ans;
+        for(int i =0; i<m;i++){
+            for(int j=0;j<n;j++){
+                if(land[i][j] == 1){
+                    if((i > 0 && land[i-1][j] == 1) || (j>0 && land[i][j-1] == 1)){
+                        continue;
+                    }
+                    int currI = i, currJ = j;
+                    vector<int> oneAns;
+                    oneAns.push_back(currI);
+                    oneAns.push_back(currJ);
+                    oneAns.push_back(currI);
+                    oneAns.push_back(currJ);
+                    while(currI < m &&land[currI][currJ] == 1){
+                        oneAns[2] = currI;
+                        currI++;
+                    }
+                    currI = i;
+                    while(currJ < n &&land[currI][currJ] == 1){
+                        oneAns[3] = currJ;
+                        currJ++;
+                    }
+                    ans.push_back(oneAns);
+                }
+            }
+        }
+        return ans;
+    }
+};

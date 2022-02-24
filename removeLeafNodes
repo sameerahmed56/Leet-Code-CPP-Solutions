@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool removeLeaf(TreeNode* root, int target){
+        if(root == nullptr) return false;
+        if(root->left != nullptr && root->left->val == target && root->left->left == nullptr && root->left->right == nullptr){
+            root->left = nullptr;
+            return true;
+        }
+        if(root->right != nullptr && root->right->val == target && root->right->left == nullptr && root->right->right == nullptr){
+            root->right = nullptr;
+            return true;
+        }
+        return removeLeaf(root->left, target) || removeLeaf(root->right, target);
+    }
+    TreeNode* removeLeafNodes(TreeNode* root, int target) {
+        bool hasValue = true;
+        while(hasValue){
+            hasValue = removeLeaf(root,target);
+        }
+        if(root != nullptr && root->val == target && root->left == nullptr && root->right == nullptr){
+            return nullptr;
+        }
+        return root;
+    }
+};

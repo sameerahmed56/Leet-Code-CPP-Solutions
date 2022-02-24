@@ -1,0 +1,17 @@
+class Solution {
+public:
+    void countGoodNodes(TreeNode* root,int currMax, int &ans){
+        if(root == nullptr){
+            return;
+        }
+        if(root->val >= currMax) ans++;
+        currMax = max(currMax,root->val);
+        countGoodNodes(root->left,currMax, ans);
+        countGoodNodes(root->right,currMax, ans);
+    }
+    int goodNodes(TreeNode* root) {
+        int ans = 0;
+        countGoodNodes(root,INT_MIN, ans);
+        return ans;
+    }
+};

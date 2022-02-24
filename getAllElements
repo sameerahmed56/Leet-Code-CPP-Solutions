@@ -1,0 +1,45 @@
+class Solution {
+public:
+    void traverse(TreeNode* root, vector<int> &v){
+        if(root == nullptr) return;
+        traverse(root->left,v);
+        v.push_back(root->val);
+        traverse(root->right,v);
+    }
+    vector<int> MergeSortedVectors(vector<int>& v1, vector<int>& v2) {
+        vector<int> v3;
+        int i, j, n, m;
+        i = j = 0;
+        n = v1.size();
+        m = v2.size();
+        while (i < n && j < m) {
+		    if (v1[i] <= v2[j]) {
+			    v3.push_back(v1[i]);
+			    ++i;
+		    }
+		    else {
+			    v3.push_back(v2[j]);
+			    ++j;
+		    }
+
+	    }
+
+        while (i < n) {
+            v3.push_back(v1[i]);
+            ++i;
+        }
+
+	    while (j < m) {
+	    	v3.push_back(v2[j]);
+		    ++j;
+	    }
+	return v3;
+
+}
+    vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
+        vector<int> v1 , v2;
+        traverse(root1,v1);
+        traverse(root2,v2);
+        return MergeSortedVectors(v1,v2);
+    }
+};

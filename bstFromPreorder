@@ -1,0 +1,19 @@
+TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if(root == NULL){
+            return new TreeNode(val);
+        }
+        if(val > root->val ){
+            root->right = insertIntoBST(root->right, val);
+        }
+        if(val < root->val ){
+            root->left = insertIntoBST(root->left, val);
+        }
+        return root;
+    }    
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        TreeNode* ans = new TreeNode(preorder[0]);
+        for(int i = 1; i < preorder.size(); i++){
+            ans = insertIntoBST(ans,preorder[i]);
+        }
+        return ans;
+    }

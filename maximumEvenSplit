@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<long long> maximumEvenSplit(long long finalSum) {
+        if(finalSum &1) return {};
+        vector<long long>ans;
+        
+        long long n=1;
+        ans.push_back(2*n);
+        while(n*(n+1)<finalSum){
+            n++;
+            ans.push_back(2*n);
+        }
+        long long left=n*(n+1)-finalSum;
+        long long index = left/2 - 1;
+        if(index < ans.size() && index >= 0){
+            ans.erase(ans.begin() + index);
+        }
+        return ans;
+    }
+};

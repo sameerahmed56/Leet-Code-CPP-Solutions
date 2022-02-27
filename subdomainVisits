@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<string> subdomainVisits(vector<string>& cpdomains) {
+        vector<string> ans;
+        unordered_map<string,int> mp;
+        for(string dom :  cpdomains){
+            int pos = 0, n = dom.size(), num = 0;
+            string numStr = "";
+            while(dom[pos] != ' '){
+                numStr+=dom[pos];
+                pos++;
+            }
+            num = stoi(numStr);
+            pos++;
+            string domStr = dom.substr(pos,n-pos);
+            mp[domStr] += num;
+            while(pos < n){
+                if(dom[pos] == '.'){
+                    domStr = dom.substr(pos+1,n-pos-1);  
+                    mp[domStr] += num;
+                }
+                pos++;
+            }
+        }
+        for (auto x : mp){
+            ans.push_back(to_string(x.second) + " " + x.first);
+        }
+        return ans;
+    }
+};

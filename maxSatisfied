@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {
+        int n = customers.size(),  ans = 0,maxOfCanAdd = 0;
+        vector<int> canAdd(n,0);
+        for(int j = 0; j < minutes && j < n; j++){
+            if(grumpy[j] == 1){
+                canAdd[0] += customers[j];
+            }
+        }
+        maxOfCanAdd = max(maxOfCanAdd,canAdd[0]);
+        if(grumpy[0] == 0) ans+= customers[0];
+        for(int i = 1; i <n; i++){
+            if(grumpy[i] == 0) ans+= customers[i];
+            canAdd[i] = canAdd[i-1];
+            if(grumpy[i-1] == 1) canAdd[i] -= customers[i-1];
+            if(i+minutes-1 < n && grumpy[i+minutes-1] == 1) canAdd[i] += customers[i+minutes-1];
+            maxOfCanAdd = max(maxOfCanAdd,canAdd[i]);
+        }
+        return ans + maxOfCanAdd;
+    }
+};

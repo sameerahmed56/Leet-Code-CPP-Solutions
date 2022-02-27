@@ -1,0 +1,49 @@
+class Solution {
+public:
+    void changeRowBit(vector<vector<int>>& grid, int i, int n){
+        for(int j = 0; j< n;j++){
+            if(grid[i][j] == 0){
+                grid[i][j] = 1;
+            }
+            else{
+                grid[i][j] = 0;
+            }
+        }
+    }
+    void changeColBit(vector<vector<int>>& grid, int j, int m){
+        for(int i = 0; i< m;i++){
+            if(grid[i][j] == 0){
+                grid[i][j] = 1;
+            }
+            else{
+                grid[i][j] = 0;
+            }
+        }
+    }
+    int matrixScore(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size(), sum = 0;
+        for(int i = 0; i < m;  i++){
+            if(grid[i][0] == 0){
+                changeRowBit(grid,i,n);
+            }
+        }
+        for(int j = 1; j < n; j++){
+            int zeroCount = 0, oneCount = 0;
+            for(int i = 0; i < m;  i++){
+                if(grid[i][j]==1)oneCount++;
+                else zeroCount++;
+            }        
+            if(zeroCount>oneCount)
+                changeColBit(grid,j,m);
+        }
+        
+        for(int i = 0; i < m;  i++){
+            string s = "";
+            for(int j = 0; j < n; j++){
+                s = s+ to_string(grid[i][j]);
+            }
+            sum += stoi(s,nullptr,2);
+        }
+        return sum;
+    }
+};

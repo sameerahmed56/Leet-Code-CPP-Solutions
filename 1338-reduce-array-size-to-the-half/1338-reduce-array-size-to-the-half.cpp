@@ -1,29 +1,17 @@
-bool sortByVal(const pair<int, int> &a, const pair<int, int> &b) { 
-    return (a.second > b.second); 
-} 
 class Solution {
 public:
     int minSetSize(vector<int>& arr) {
-        int ans = 0, n = arr.size();
-        map<int, int> mp;
-        for(int curr: arr){
-            mp[curr]++;
-        }
-        vector<pair<int, int>> vec;
-        for (auto it = mp.begin(); it !=mp.end(); it++)
-        {
-            vec.push_back(make_pair(it->first, it->second));
-        }
-        sort(vec.begin(), vec.end(), sortByVal); 
-        int sum = 0;
+        unordered_map<int, int> cnt;
+        for (int x : arr) ++cnt[x];
         
-        for (int i = 0; i < vec.size(); i++)
-        {
-            if(sum>=n/2)
-                break;
-            
-            sum += vec[i].second;
-            ans++;
+        vector<int> frequencies;
+        for (auto [_, freq] : cnt) frequencies.push_back(freq);
+        sort(frequencies.begin(), frequencies.end());
+        
+        int ans = 0, removed = 0, half = arr.size() / 2, i = frequencies.size() - 1;
+        while (removed < half) {
+            ans += 1;
+            removed += frequencies[i--];
         }
         return ans;
     }

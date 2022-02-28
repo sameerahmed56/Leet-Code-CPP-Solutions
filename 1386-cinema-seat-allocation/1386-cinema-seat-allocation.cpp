@@ -28,7 +28,6 @@ public:
                 else if(rightBlock){
                     ans--;
                 }
-                
                 i--;
                 leftBlock = false;
                 midBlock = false;

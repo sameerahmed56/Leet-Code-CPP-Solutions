@@ -15,7 +15,6 @@ public:
         if(index >= n) return NULL;
         TreeNode* root = NULL;
         if(key > min && key < max){
-            cout << "inside ";
             root = new TreeNode(key);
             index = index + 1;
             

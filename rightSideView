@@ -28,8 +28,6 @@ public:
                 }
                 if(curr -> left != nullptr){
                     q.push(curr->left);
-                }if(curr -> left != nullptr){
-                    q.push(curr->left);
                 }
                 if(curr -> right != nullptr){
                     q.push(curr->right);

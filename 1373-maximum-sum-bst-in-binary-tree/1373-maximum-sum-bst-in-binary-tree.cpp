@@ -35,7 +35,6 @@ public:
         if(leftInfo.isBST && rightInfo.isBST && leftInfo.max < root->val && rightInfo.min> root->val){
             curr.isBST = true;
             ans = max(ans,curr.currSum);
-            cout <<  curr.currSum << " ";
             return curr;
         }
         curr.isBST = false;

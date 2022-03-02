@@ -14,7 +14,6 @@ public:
         while(l<=r){
             long long mid = l + (r-l)/2;
             long long trips = calcTrip(time,mid);
-            cout << mid << "-" << trips << " ";
             if( trips >= totalTrips){
                 ans = mid;
                 r = mid - 1;

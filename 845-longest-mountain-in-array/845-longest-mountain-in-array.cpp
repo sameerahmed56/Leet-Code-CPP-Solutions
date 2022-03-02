@@ -10,7 +10,7 @@ public:
                 reachedPeak = false;
                 currCount++;
             }
-            else if(arr[i] < prev && i != 1 && currCount != 0 ){
+            else if(arr[i] < prev && currCount != 0 ){
                 reachedPeak = true;
                 currCount++;
                 ans = max(currCount, ans);

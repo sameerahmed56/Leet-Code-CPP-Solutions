@@ -12,10 +12,8 @@
 class Solution {
 public:
     TreeNode* insertIntoMaxTree(TreeNode* root, int val) {
-        if(root == NULL){
-            TreeNode* newRoot = new TreeNode(val);
-            return newRoot;
-        }
+        if(root == NULL) return new TreeNode(val);
+        
         if(root->val < val){
             TreeNode* newRoot = new TreeNode(val);
             newRoot->left = root;

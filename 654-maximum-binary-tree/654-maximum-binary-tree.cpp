@@ -23,21 +23,15 @@ public:
         return maxIndex;
         
     }
-    TreeNode* constructBinaryTree(TreeNode* root, vector<int>& nums, int l, int r){
+    TreeNode* constructBinaryTree(vector<int>& nums, int l, int r){
         if(l>r) return NULL;
         int maxIndex = findMax(nums,l,r);
         TreeNode* curr = new TreeNode(nums[maxIndex]);
-        curr->left = constructBinaryTree(root, nums, l, maxIndex-1);
-        curr->right = constructBinaryTree(root, nums, maxIndex+1, r);
+        curr->left = constructBinaryTree(nums, l, maxIndex-1);
+        curr->right = constructBinaryTree(nums, maxIndex+1, r);
         return curr;
     }
     TreeNode* constructMaximumBinaryTree(vector<int>& nums){
-        int l = 0, r = nums.size()-1;
-        if(l>r) return NULL;
-        int maxIndex = findMax(nums,l,r);
-        TreeNode* root = new TreeNode(nums[maxIndex]);
-        root->left = constructBinaryTree(root, nums, l, maxIndex-1);
-        root->right = constructBinaryTree(root, nums, maxIndex+1,r);
-        return root;
+        return constructBinaryTree(nums, 0, nums.size()-1);;
     }
 };

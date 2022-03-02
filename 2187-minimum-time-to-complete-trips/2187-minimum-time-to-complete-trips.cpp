@@ -7,10 +7,9 @@ public:
     }
     long long minimumTime(vector<int>& time, int totalTrips) {
         long long ans = 0;
-        int minimum = *min_element(time.begin(),time.end());
+        long long minimum = *min_element(time.begin(),time.end());
         int n = time.size();
-        long long  rem = 100000000000000/minimum, newTotal = min(rem,(long long)totalTrips);
-        long long l = 1, r = minimum*newTotal;
+        long long l = 1, r = minimum*totalTrips;
         while(l<=r){
             long long mid = l + (r-l)/2;
             long long trips = calcTrip(time,mid);

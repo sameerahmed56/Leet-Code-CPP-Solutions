@@ -11,10 +11,10 @@
  */
 class Solution {
 public:
-    int findMax(vector<int> nums, int l , int r){
+    int findMax(vector<int>&nums, int l , int r){
         int maxIndex = -1, maxElem = -1;
         while(l <= r){
-            if(maxElem <  nums[l]){
+            if(maxElem < nums[l]){
                 maxElem = nums[l];
                 maxIndex = l;
             }
@@ -32,11 +32,12 @@ public:
         return curr;
     }
     TreeNode* constructMaximumBinaryTree(vector<int>& nums){
-        if(nums.size() == 0) return NULL;
-        int maxIndex = findMax(nums,0,nums.size()-1);
+        int l = 0, r = nums.size()-1;
+        if(l>r) return NULL;
+        int maxIndex = findMax(nums,l,r);
         TreeNode* root = new TreeNode(nums[maxIndex]);
-        root->left = constructBinaryTree(root, nums, 0, maxIndex-1);
-        root->right = constructBinaryTree(root, nums, maxIndex+1, nums.size()-1);
+        root->left = constructBinaryTree(root, nums, l, maxIndex-1);
+        root->right = constructBinaryTree(root, nums, maxIndex+1,r);
         return root;
     }
 };

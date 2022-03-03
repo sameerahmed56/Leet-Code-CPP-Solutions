@@ -6,11 +6,7 @@ public:
         for(int x = 0; x <n; x++){
             int i = 0, j = x; 
             while(i<m && j<n){
-                if((grid[i][j] == 1 && j == n-1) || (grid[i][j] == 1 && grid[i][j+1] == -1)){
-                    ans.push_back(-1);
-                    break;
-                }
-                if((grid[i][j] == -1 && j == 0) || (grid[i][j] == -1 && grid[i][j-1] == 1)){
+                if((grid[i][j] == -1 && j == 0) || (grid[i][j] == -1 && grid[i][j-1] == 1) || (grid[i][j] == 1 && j == n-1) || (grid[i][j] == 1 && grid[i][j+1] == -1)){
                     ans.push_back(-1);
                     break;
                 }

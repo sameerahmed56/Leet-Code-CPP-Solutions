@@ -20,7 +20,6 @@ public:
                 if(foundDigit){
                     return isNegative ? (int)-ans : (int)ans;
                 }
-                isNegative = false;
                 foundDigit = true;
             }
             else if(isdigit(c)){

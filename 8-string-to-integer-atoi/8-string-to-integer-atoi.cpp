@@ -1,7 +1,6 @@
 class Solution {
 public:
     int myAtoi(string s) {
-        int n = s.size();
         long int ans = 0;
         bool foundDigit = false, isNegative = false;
         for(char c: s){

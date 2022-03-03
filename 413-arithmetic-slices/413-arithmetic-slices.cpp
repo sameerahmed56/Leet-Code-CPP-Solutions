@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int numberOfArithmeticSlices(vector<int>& nums) {
+        int ans = 0, n=nums.size(), count=2,diff = 0;
+        if(n < 3){
+            return 0;
+        }
+        int curr = nums[1];
+        diff = curr - nums[0];
+        for(int i=2;i<n;i++){
+            if(diff == nums[i] - curr){
+                curr = nums[i];
+                count++;
+            }
+            else{
+                diff = nums[i] - curr;
+                curr = nums[i];
+                if(count >= 3){
+                    ans += ((count-2)*(count-1))/2;
+                }
+                count = 2;
+            }
+        }
+        if(count >= 3){
+            ans += ((count-2)*(count-1))/2;
+        }
+        return ans;
+    }
+};

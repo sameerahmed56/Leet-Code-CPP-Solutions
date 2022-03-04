@@ -17,7 +17,7 @@ public:
         return count<=days;
     }
     int shipWithinDays(vector<int>& w, int days) {
-        int sum =accumulate(w.begin(),w.end(),0), l = 1,r=sum, ans = INT_MAX;
+        int sum =accumulate(w.begin(),w.end(),0), l = 1, r=sum, ans = INT_MAX;
         while(l<=r){
             int mid = l + (r - l) / 2;
             if(isFeasible(w,days,mid)){

@@ -11,10 +11,7 @@ public:
             if(x==0){
                 while(i >=0){
                     if(board[i][j] == 1){
-                        vector<int> curr;
-                        curr.push_back(i);
-                        curr.push_back(j);
-                        ans.push_back(curr);
+                        ans.push_back({i,j});
                         break;
                     }
                     i--;
@@ -23,10 +20,7 @@ public:
             else if(x==1){
                 while(i <= 7){
                     if(board[i][j] == 1){
-                        vector<int> curr;
-                        curr.push_back(i);
-                        curr.push_back(j);
-                        ans.push_back(curr);
+                        ans.push_back({i,j});
                         break;
                     }
                     i++;
@@ -35,10 +29,7 @@ public:
             else if(x==2){
                 while(j >=0 ){
                     if(board[i][j] == 1){
-                        vector<int> curr;
-                        curr.push_back(i);
-                        curr.push_back(j);
-                        ans.push_back(curr);
+                        ans.push_back({i,j});
                         break;
                     }
                     j--;
@@ -47,10 +38,7 @@ public:
             else if(x==3){
                 while(j <= 7){
                     if(board[i][j] == 1){
-                        vector<int> curr;
-                        curr.push_back(i);
-                        curr.push_back(j);
-                        ans.push_back(curr);
+                        ans.push_back({i,j});
                         break;
                     }
                     j++;
@@ -58,11 +46,8 @@ public:
             }
             else if(x==4){
                 while(i <= 7 && j <= 7){
-                    if(board[i][j] == 1){
-                        vector<int> curr;
-                        curr.push_back(i);
-                        curr.push_back(j);
-                        ans.push_back(curr);
+                    if(board[i][j] == 1){                        
+                        ans.push_back({i,j});
                         break;
                     }
                     i++;
@@ -72,10 +57,7 @@ public:
             else if(x==5){
                 while(i <= 7 && j >= 0){
                     if(board[i][j] == 1){
-                        vector<int> curr;
-                        curr.push_back(i);
-                        curr.push_back(j);
-                        ans.push_back(curr);
+                        ans.push_back({i,j});
                         break;
                     }
                     i++;
@@ -85,10 +67,7 @@ public:
             else if(x==6){
                 while(i >= 0 && j <= 7){
                     if(board[i][j] == 1){
-                        vector<int> curr;
-                        curr.push_back(i);
-                        curr.push_back(j);
-                        ans.push_back(curr);
+                        ans.push_back({i,j});
                         break;
                     }
                     i--;
@@ -98,10 +77,7 @@ public:
             else if(x==7){
                 while(i >= 0 && j >= 0){
                     if(board[i][j] == 1){
-                        vector<int> curr;
-                        curr.push_back(i);
-                        curr.push_back(j);
-                        ans.push_back(curr);
+                        ans.push_back({i,j});
                         break;
                     }
                     i--;

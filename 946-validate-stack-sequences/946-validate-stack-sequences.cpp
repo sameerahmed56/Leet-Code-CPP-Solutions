@@ -5,7 +5,6 @@ public:
         unordered_set <int> intSet ;
         int pop = 0, pus = 0;
         while(pop<popped.size()){
-            cout <<pop << " ";
             int key  = popped[pop];
             if(pus < pushed.size() && pushed[pus] == key){
                 pop++;

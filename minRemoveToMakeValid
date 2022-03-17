@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string minRemoveToMakeValid(string s) {
+        string ans = "";
+        stack<int>st;
+        int ind = 0;
+        for(char c: s){
+            if(c=='('){
+                st.push(ind);
+                ans += c;
+            }
+            else if(c==')'){
+                if(!st.empty()){
+                    st.pop();
+                    ans += c;
+                }
+                else{
+                    ind--;
+                }
+            }
+            else{
+                ans += c;
+            }
+            ind++;
+        }
+        for(int i=ans.size()-1;i>=0;i--){
+            if(st.empty()) break;
+            if(i==st.top()){
+                st.pop();
+                ans.erase(ans.begin()+i);
+            }
+        }
+        return ans;
+    }
+};

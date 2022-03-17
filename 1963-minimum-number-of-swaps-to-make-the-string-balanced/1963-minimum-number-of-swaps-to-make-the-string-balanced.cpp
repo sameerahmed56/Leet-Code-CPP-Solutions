@@ -8,14 +8,9 @@ public:
                     ans++;
                     open++;
                 }
-                else{
-                    close++;
-                }
-                
+                else close++;
             }
-            else{
-               open++; 
-            }
+            else open++; 
         }
         return ans;
     }

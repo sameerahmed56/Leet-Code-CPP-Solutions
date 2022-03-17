@@ -21,9 +21,7 @@ public:
                 root = root->next;
                 sum=0;
             }
-            else{
-                sum+=head->val;
-            }
+            else sum+=head->val;
             head = head->next;
         }
         return ans->next;

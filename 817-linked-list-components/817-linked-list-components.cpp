@@ -22,10 +22,8 @@ public:
                 hasGroup = true;
                 head=head->next;
             }
-            if(hasGroup)ans++;
-            if(head){
-                head=head->next;
-            }
+            if(hasGroup) ans++;
+            if(head) head=head->next;
         }
         return ans;
     }

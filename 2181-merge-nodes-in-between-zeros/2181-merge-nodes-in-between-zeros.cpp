@@ -16,8 +16,7 @@ public:
         int sum = 0;
         while(head!= nullptr){
             if(head->val == 0 && sum!=0){
-                ListNode* curr = new ListNode(sum);
-                root->next = curr;
+                root->next = new ListNode(sum);
                 root = root->next;
                 sum=0;
             }

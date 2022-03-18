@@ -21,14 +21,13 @@ public:
     }
     void traverse(TreeNode* root,vector<int> &arr){
         if(root==NULL) return;
-        arr.push_back(root->val);
         traverse(root->left,arr);
+        arr.push_back(root->val);
         traverse(root->right,arr);
     }
     TreeNode* balanceBST(TreeNode* root) {
         vector<int> arr;
         traverse(root,arr);
-        sort(arr.begin(),arr.end());
         int l = 0, r = arr.size()-1, mid = l + (r - l) / 2;
         TreeNode* ans = new TreeNode(arr[mid]);
         ans->left = createTree(arr,l,mid-1);

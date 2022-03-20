@@ -1,35 +1,17 @@
 class Solution {
 public:
-    int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
-        unordered_map<int,int> mp;
-        int n=tops.size(), freq = INT_MIN, elem = 0;
-        for(int i=0;i<n;i++){
-            if(tops[i] == bottoms[i]){
-                mp[tops[i]]++;
-                if(mp[tops[i]] > freq){
-                    elem = tops[i];
-                    freq = mp[tops[i]];
-                }
-            }
-            else{
-                mp[tops[i]]++;
-                if(mp[tops[i]] > freq){
-                    elem = tops[i];
-                    freq = mp[tops[i]];
-                }
-                mp[bottoms[i]]++;
-                if(mp[bottoms[i]] > freq){
-                    elem = bottoms[i];
-                    freq = mp[bottoms[i]];
-                }
-            }
+    int minDominoRotations(vector<int>& A, vector<int>& B) {
+        vector<int> countA(7), countB(7), same(7);
+        int n = A.size();
+        for (int i = 0; i < n; ++i) {
+            countA[A[i]]++;
+            countB[B[i]]++;
+            if (A[i] == B[i])
+                same[A[i]]++;
         }
-        int tp=0,bt=0;
-        for(int i=0;i<n;i++){
-            if(tops[i] != elem && bottoms[i] != elem) return -1;
-            if(tops[i]!=elem)tp++;
-            if(bottoms[i]!=elem)bt++;
-        }
-        return min(tp,bt);
+        for (int i  = 1; i < 7; ++i)
+            if (countA[i] + countB[i] - same[i] == n)
+                return n - max(countA[i], countB[i]);
+        return -1;
     }
 };

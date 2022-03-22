@@ -2,8 +2,8 @@ class Solution {
 public:
     vector<string> findAllRecipes(vector<string>& recipes, vector<vector<string>>& ingredients, vector<string>& supplies) {
         queue<string> q;
-        map<string,int> inorder;
-        map<string,vector<string>> adj;
+        unordered_map<string,int> inorder;
+        unordered_map<string,vector<string>> adj;
         vector<string> ans;
         for(string s: supplies){
             q.push(s);   

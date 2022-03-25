@@ -1,16 +1,13 @@
 class Solution {
 public:
     int minSteps(string s, string t) {
-        unordered_map<char,int>m;
+        unordered_map<char,int>mp;
         int sum=0;
-        for(auto i:s)
-            m[i]++;
-        for(auto i:t)
-            m[i]--;
+        for(auto i: s) mp[i]++;
+        for(auto i: t) mp[i]--;
         
-        for(auto i:m){
-            if(i.second<0)
-                sum += i.second;
+        for(auto i:mp){
+            if(i.second<0) sum += i.second;
         }
         return abs(sum);    
     }

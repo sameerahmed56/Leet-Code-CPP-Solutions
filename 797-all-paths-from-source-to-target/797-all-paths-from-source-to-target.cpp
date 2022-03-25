@@ -7,13 +7,11 @@ public:
             ans.push_back(arr);
             return;
         }
-        for(int i: graph[pos]){
+        for(int i: graph[pos])
             getPath(graph,i,n, arr);
-        }
     }
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        int n = graph.size();
-        getPath(graph,0,n, {});
+        getPath(graph,0,graph.size(), {});
         return ans;
     }
 };

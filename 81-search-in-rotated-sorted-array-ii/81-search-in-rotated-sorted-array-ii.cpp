@@ -4,7 +4,6 @@ public:
         int  l=0,r=nums.size()-1;
         while(l<=r){
             int mid = l + (r - l) / 2;
-            cout << mid << ' ';
             if(nums[mid] == target) return true;
             if(nums[l] == nums[mid]){
                 l++;

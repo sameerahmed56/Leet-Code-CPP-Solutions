@@ -106,7 +106,6 @@ struct Node
 class Solution {
 public:
     vector<int> ans;
-    vector<int> right;
     void getLeftBoundary(Node* root , bool isBoundary){
         if(root==NULL)return;
         if(isBoundary || (root->right == NULL &&  root->left == NULL)){
@@ -120,27 +119,25 @@ public:
             getLeftBoundary(root->right, false);
         }
     }
-    void getRightBoundary(Node* root , bool isBoundary){
+    void getRightBoundary(Node* root , bool isBoundary,int size){
         if(root==NULL)return;
         if(isBoundary || (root->right == NULL &&  root->left == NULL)){
-            right.push_back(root->data);
+            ans.insert(ans.begin()+size,root->data);
         }
         if(root->right == NULL){
-            getRightBoundary(root->left, isBoundary);
+            getRightBoundary(root->left, isBoundary, size);
         }
         else{
-            getRightBoundary(root->right, isBoundary);
-            getRightBoundary(root->left, false);
+            getRightBoundary(root->right, isBoundary, size);
+            getRightBoundary(root->left, false, size);
         }
     }
     vector <int> boundary(Node *root)
     {
         if(root!= NULL)ans.push_back(root->data);
         getLeftBoundary(root->left,true);
-        getRightBoundary(root->right,true);
-        for(int i=right.size()-1;i>=0;i--){
-            ans.push_back(right[i]);
-        }
+        int size = ans.size();
+        getRightBoundary(root->right,true,size);
         return ans;
         
     }

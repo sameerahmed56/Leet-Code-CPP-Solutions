@@ -5,11 +5,12 @@ public:
         while(l<=r){
             int mid = l + (r - l) / 2;
             if(nums[mid] == target) return true;
-            if(nums[l] == nums[mid]){
+            if((nums[l] == nums[mid]) && (nums[r] == nums[mid]))
+            {
                 l++;
-                continue;
+                r--;
             }
-            if(nums[l] <= nums[mid]){
+            else if(nums[l] <= nums[mid]){
                 if(target < nums[mid] && target >= nums[l]) r=mid-1;
                 else l=mid+1;
             }

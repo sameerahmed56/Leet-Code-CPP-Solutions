@@ -10,14 +10,12 @@ public:
         if(pos < 0 || rem < 0) return;
         if(pos !=0){
             getBobArrow(alice,rem,sum,bob, pos-1);
-            int aliceCount = alice[pos] + 1;
-            bob[pos] = aliceCount;
-            getBobArrow(alice,rem-aliceCount,sum+pos,bob, pos-1);
+            bob[pos] = alice[pos] + 1;
+            getBobArrow(alice,rem-bob[pos],sum+pos,bob, pos-1);
         }
         else{
             bob[pos] = rem;
-            int aliceCount = alice[pos] + 1;
-            if(rem>=aliceCount){
+            if(rem>=alice[pos] + 1){
                 sum = sum+pos;
             }
             getBobArrow(alice,0,sum,bob,pos-1);

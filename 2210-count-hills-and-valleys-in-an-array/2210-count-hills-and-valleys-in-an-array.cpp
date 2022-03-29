@@ -1,21 +1,13 @@
 class Solution {
 public:
     int countHillValley(vector<int>& nums) {
-        int ans = 0, i = 1, prev = nums[0], next = 0;
-        while(i<nums.size()){
-            int curr = nums[i];
-            if(curr == prev){
-                i++;
-                continue;
-            }
-            while(i<nums.size() && nums[i] ==curr){
-                i++;
-            }
-            if(i>=nums.size()) break;
-            if(prev < curr && nums[i] < curr) ans++;
-            else if(curr < prev && curr < nums[i]) ans++;
-            prev = curr;
+        vector<int> v;
+        for (int x : nums)
+            if (v.empty() or v.back() != x) v.push_back(x);
+        int res = 0;
+        for (int i = 1; i + 1 < v.size(); i += 1) {
+            res += (v[i] - v[i - 1]) * (v[i] - v[i + 1]) > 0;
         }
-        return ans;
+        return res;
     }
 };

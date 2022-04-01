@@ -19,7 +19,6 @@ public:
         for(int i=0; i<dig.size();i++){
             if(vec[dig[i][0]][dig[i][1]].first >= 0){
                 left[vec[dig[i][0]][dig[i][1]].first] -=  vec[dig[i][0]][dig[i][1]].second;
-                // cout <<left[vec[dig[i][0]][dig[i][1]].first] << "-"<< vec[dig[i][0]][dig[i][1]].first << " ";
                 if(left[vec[dig[i][0]][dig[i][1]].first] == 0) ans++; 
             }
         }

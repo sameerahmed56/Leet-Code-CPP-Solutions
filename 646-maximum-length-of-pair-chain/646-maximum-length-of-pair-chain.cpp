@@ -7,9 +7,7 @@ public:
         for(int i=n-1;i>=0;i--){
             int count = 0;
             for(int j=i+1;j<n;j++){
-                if(pairs[i][1] < pairs[j][0]){
-                    count = max(count,dp[j]);
-                }
+                if(pairs[i][1] < pairs[j][0]) count = max(count,dp[j]);
             }
             dp[i] = count + 1;
             ans = max(ans,dp[i]);

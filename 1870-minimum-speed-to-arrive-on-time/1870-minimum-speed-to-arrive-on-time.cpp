@@ -11,7 +11,7 @@ public:
         return time<=hour;
     }
     int minSpeedOnTime(vector<int>& dist, double hour) {
-        int l=1,r=1e9, ans= -1;
+        int l=1,r=1e7, ans= -1;
         while(l<=r){
             int mid = l + (r-l)/2;
             if(isFeasible(dist,hour,mid)){

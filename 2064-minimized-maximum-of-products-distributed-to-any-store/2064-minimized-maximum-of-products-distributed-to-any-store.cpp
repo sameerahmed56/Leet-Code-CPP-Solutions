@@ -11,8 +11,6 @@ public:
                 maxValue = max(maxValue,nums[i]%prod);
             }
         }
-        // cout << count << "-" << prod << ":" ;
-        // cout << maxValue << " ";
         if(count <= n){
             ans = min(ans,maxValue);
         }

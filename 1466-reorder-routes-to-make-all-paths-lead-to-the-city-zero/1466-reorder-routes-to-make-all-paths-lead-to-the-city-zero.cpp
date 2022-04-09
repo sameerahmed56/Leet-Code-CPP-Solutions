@@ -2,7 +2,6 @@ class Solution {
 public:
     int minReorder(int n, vector<vector<int>>& connections) {
         vector<vector<int>> adj(n);
-        vector<vector<int>> adjRev(n);
         vector<bool> visited(n,false);
         int ans = 0;
         queue<int>q;

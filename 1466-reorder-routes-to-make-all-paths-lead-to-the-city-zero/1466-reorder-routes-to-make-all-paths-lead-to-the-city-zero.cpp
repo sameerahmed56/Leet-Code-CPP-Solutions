@@ -8,7 +8,7 @@ public:
         queue<int>q;
         for(int i=0;i<n-1;i++){
             adj[connections[i][0]].push_back(connections[i][1]);
-            adjRev[connections[i][1]].push_back(connections[i][0]);
+            adj[connections[i][1]].push_back(-connections[i][0]);
         }
         q.push(0);
         while(!q.empty()){
@@ -16,16 +16,11 @@ public:
             q.pop();
             visited[x]= true;
             for(int i=0;i<adj[x].size();i++){
-                if(!visited[adj[x][i]]){
-                    ans++;
-                    q.push(adj[x][i]);
+                if(!visited[abs(adj[x][i])]){
+                    if(adj[x][i]>0)ans++;
+                    q.push(abs(adj[x][i]));
                 }
             } 
-            for(int i=0;i<adjRev[x].size();i++){
-                if(!visited[adjRev[x][i]]){
-                    q.push(adjRev[x][i]);
-                }
-            }
         }
         return ans;
     }

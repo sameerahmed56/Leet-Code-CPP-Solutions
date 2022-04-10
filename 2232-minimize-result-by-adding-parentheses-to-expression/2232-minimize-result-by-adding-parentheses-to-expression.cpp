@@ -16,7 +16,6 @@ public:
                 d=d*10+(s[i]-'0');
             }
         }
-        // cout << a <<"-" << b << "-" << c <<"-" << d << " ";
         a = a == 0?1:a;
         d = d == 0?1:d;
         return a*(b+c)*d;
@@ -51,7 +50,6 @@ public:
         for(int i=right;i<n;i++){
             ans[i+2]=expression[i];
         }
-        // cout << minVal;
         return ans;
     }
 };

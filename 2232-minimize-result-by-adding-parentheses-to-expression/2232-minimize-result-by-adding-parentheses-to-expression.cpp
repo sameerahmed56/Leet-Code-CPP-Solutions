@@ -38,18 +38,7 @@ public:
                 }
             }
         }
-        string ans(n+2, '0');
-        for(int i=0;i<left;i++){
-            ans[i]=expression[i];
-        }
-        ans[left] = '(';
-        for(int i=left;i<right;i++){
-            ans[i+1]=expression[i];
-        }
-        ans[right+1] = ')';
-        for(int i=right;i<n;i++){
-            ans[i+2]=expression[i];
-        }
+        string ans = expression.substr(0,left) + "("+ expression.substr(left,right-left) +  ")" + expression.substr(right,n-right);
         return ans;
     }
 };

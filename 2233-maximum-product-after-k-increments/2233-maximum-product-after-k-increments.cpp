@@ -3,20 +3,17 @@ public:
     int maximumProduct(vector<int>& nums, int k) {
         long long sum = 0, ans = 1;
         int count =0, n=nums.size();
-        priority_queue<int>pq;
+        sort(nums.begin(), nums.end(), greater<int>());
         for(int a: nums){
             sum+=a;
-            pq.push(a);
         }
         sum+=k;
         int div = 0;
-        while(!pq.empty()){
-            div = sum/n;
-            int x = pq.top();
-            // cout << div << "-" << x << " ";
-            pq.pop();
-            if(x<div || n==1){
-                if(k<div-x || n==1){
+        for(int i=0;i<n;i++){
+            div = sum/(n-i);
+            int x = nums[i];
+            if(x<div || i==n-1){
+                if(k<div-x || i==n-1){
                     x+=k;
                     k=0;
                 }
@@ -28,7 +25,6 @@ public:
             ans *=x;
             ans = ans%1000000007;
             sum-=x;
-            n--;
         }
         return (int)ans;
     }

@@ -1,41 +1,29 @@
 class Solution {
 public:
     bool isBipartite(vector<vector<int>>& graph) {
-        int n = graph.size();
-        vector<bool> visi(n,false);
-        unordered_set<int> first, second;
-        bool isFirst = true;
-        queue<int> q;
-        for(int i=0;i<n;i++){
-            if(!visi[i]){
-                q.push(i);
-                while(!q.empty()){
-                    int size = q.size();
-                    while(size>0){
-                       int top = q.front();
-                        q.pop();
-                        visi[top] = true;
-                        for(int j=0;j<graph[top].size();j++){
-                            if(!visi[graph[top][j]]){
-                                q.push(graph[top][j]);
-                                visi[graph[top][j]] = true;
-                            }
-                            else{
-                                if(isFirst){
-                                    if(second.count(graph[top][j])) return false;
-                                }
-                                else{
-                                    if(first.count(graph[top][j])) return false;
-                                }
-                            }
-                            isFirst ? first.insert(graph[top][j]) : second.insert(graph[top][j]);
-                        } 
-                        size--;
-                    }
-                    isFirst = !isFirst;
-                }
-            }   
-        }
-        return true;
+    int n = graph.size();
+    vector<int> color(n); // 0: uncolored; 1: color A; -1: color B
+        
+    queue<int> q; // queue, resusable for BFS    
+	
+    for (int i = 0; i < n; i++) {
+      if (color[i]) continue; // skip already colored nodes
+      
+      // BFS with seed node i to color neighbors with opposite color
+      color[i] = 1; // color seed i to be A (doesn't matter A or B) 
+      for (q.push(i); !q.empty(); q.pop()) {
+        int cur = q.front();
+        for (int neighbor : graph[cur]) 
+		{
+          if (!color[neighbor]) // if uncolored, color with opposite color
+          { color[neighbor] = -color[cur]; q.push(neighbor); } 
+		  
+          else if (color[neighbor] == color[cur]) 
+            return false; // if already colored with same color, can't be bipartite!
+        }        
+      }
     }
+    
+    return true;
+  }
 };

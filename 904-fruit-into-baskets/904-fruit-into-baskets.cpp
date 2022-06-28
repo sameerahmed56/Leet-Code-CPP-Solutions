@@ -1,20 +1,13 @@
 class Solution {
 public:
-    int totalFruit(vector<int>& fruits) {
-        map<int,int> mp;
-        int n=fruits.size(), ans = 0,start = 0, i = 0;
-        while(i<n){
-            mp[fruits[i]]++;
-            if(mp.size() > 2){
-                while(start < i && mp.size()>2 ){
-                    mp[fruits[start]]--;
-                    if(mp[fruits[start]]<=0)mp.erase(fruits[start]);
-                    start++;
-                }
-            }
-            ans = max(i-start + 1,ans);
-            i++;
+    int totalFruit(vector<int> tree) {
+        int res = 0, cur = 0, count_b = 0, a = 0, b = 0;
+        for (int c :  tree) {
+            cur = c == a || c == b ? cur + 1 : count_b + 1;
+            count_b = c == b ? count_b + 1 : 1;
+            if (b != c) a = b, b = c;
+            res = max(res, cur);
         }
-        return ans;
+        return res;
     }
 };

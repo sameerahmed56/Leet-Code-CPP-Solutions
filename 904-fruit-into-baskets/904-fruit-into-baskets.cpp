@@ -2,16 +2,7 @@ class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
         map<int,int> mp;
-        int n=fruits.size(), i=0;
-        while(i < n && mp.size() <= 2){
-            mp[fruits[i]]++;
-            if(mp.size() > 2){
-                mp.erase(fruits[i]);
-                break;
-            }
-            i++;
-        }
-        int ans = max(ans,i), start = 0;
+        int n=fruits.size(), ans = 0,start = 0, i = 0;
         while(i<n){
             mp[fruits[i]]++;
             if(mp.size() > 2){
@@ -21,7 +12,6 @@ public:
                     start++;
                 }
             }
-            // cout << i << "-" << start << " ";
             ans = max(i-start + 1,ans);
             i++;
         }

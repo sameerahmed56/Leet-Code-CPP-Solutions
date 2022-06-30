@@ -1,9 +1,8 @@
 class Solution {
 public:
     long long minimumRemoval(vector<int>& beans) {
-        long long ans = LLONG_MAX, prefixSum = 0, totalSum = 0;
+        long long ans = LLONG_MAX, prefixSum = 0, totalSum = 0, n = beans.size();
         sort(beans.begin(), beans.end());
-        long long n = beans.size();
         for(int x: beans){
             totalSum += x-beans[0];
         }

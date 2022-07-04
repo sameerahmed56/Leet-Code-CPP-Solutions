@@ -1,28 +1,17 @@
 class Solution {
 public:
-    struct compare{
-        bool operator() (const tuple <int,int,int>& a, const tuple <int,int,int>& b) {
-            return get<0>(a) > get<0>(b);
-        };
-    };
-    int kthSmallest(vector<vector<int>>& A, int k) {
-        int n = A.size(), count = 1;
-        priority_queue <tuple <int,int,int>, vector<tuple <int,int,int>>, compare > pq;
-        for(int j=0; j<n; j++){
-            pq.push(make_tuple(A[0][j],0,j));
-            A[0][j] = INT_MAX;  
+    int kthSmallest(vector<vector<int>> &matrix, int k) {
+        int m = matrix.size(), n = matrix[0].size(), ans; 
+        priority_queue<vector<int>, vector<vector<int>>, greater<>> minHeap;
+        for (int r = 0; r < min(m, k); ++r)
+            minHeap.push({matrix[r][0], r, 0});
+
+        for (int i = 1; i <= k; ++i) {
+            auto top = minHeap.top(); minHeap.pop();
+            int r = top[1], c = top[2];
+            ans = top[0];
+            if (c + 1 < n) minHeap.push({matrix[r][c + 1], r, c + 1});
         }
-        while(!pq.empty()){
-            if(count == k) return get<0>(pq.top());
-            int x = get<1>(pq.top());
-            int y = get<2>(pq.top());
-            pq.pop();
-            if(x<n-1 && A[x+1][y] < INT_MAX){
-                pq.push(make_tuple(A[x+1][y],x+1,y));
-                A[x+1][y] = INT_MAX;
-            }
-            count++;
-        }
-        return 0;
+        return ans;
     }
 };

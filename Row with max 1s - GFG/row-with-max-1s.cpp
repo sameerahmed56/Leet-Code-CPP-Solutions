@@ -9,29 +9,24 @@ public:
 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
 	    // code here
 	    int i = 0, j = 0, ans = -1, maxCount = 0;;
-	    bool found = false;
-	    for(;i<n && !found ;i++){
-	        j = 0;
-	        while(j < m && arr[i][j] != 1){
-	            j++;
-	        }
-	        if(j!=m){
-	            found = true;
-	            maxCount = n-j;
-	            ans = i;
-	        }
+	    while(j < m && arr[0][j] != 1){
+	        j++;
 	    }
-	    // j = 1
-	    if(!found) return -1;
-	    for( ;i<n; i++){
+	    if(j!=m){
+	        maxCount = m-j;
+	        ans = i;
+	    }
+	    else j = m-1;
+	    
+	    for( i=1; i<n; i++){
 	        if(j >= 0 && arr[i][j] == 1){
 	            while(j >= 0 && arr[i][j] == 1){
 	                j--;
 	            }
 	            j++;
-	            if(n-j>maxCount){
+	            if(m-j>maxCount){
 	                ans = i;
-	                maxCount = n-j;
+	                maxCount = m-j;
 	            }
 	        }
 	    }

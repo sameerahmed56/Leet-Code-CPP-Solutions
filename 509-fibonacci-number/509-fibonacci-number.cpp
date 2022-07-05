@@ -1,14 +1,13 @@
 class Solution {
 public:
-    vector<int> dp = vector<int>(31,-1);
     int fib(int n) {
-        if(n==0) return 0;
-        if(n==1) return 1;
-        if(n==2) return 1;
-        if(dp[n] != -1){
-            return dp[n];
+        if(n<1) return n;
+        int prev2 = 0, prev = 1;
+        for(int i =2; i<=n; i++){
+            int curri = prev + prev2;
+            prev2 = prev;
+            prev = curri;
         }
-        dp[n] = fib(n-1) + fib(n-2);
-        return dp[n];
+        return prev;
     }
 };

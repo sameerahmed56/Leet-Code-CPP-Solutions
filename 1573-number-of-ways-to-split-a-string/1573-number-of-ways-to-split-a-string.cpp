@@ -12,14 +12,11 @@ public:
         }
         else{
             oneCount /= 3;
-            bool found = true;
             long long count = 0, midCount = 0;
             for(char c: s){
                 if(c=='1'){
                     count++;
-                    if(midCount != 0){
-                        ans = ans * (midCount+1) % mod;
-                    } 
+                    ans = ans * (midCount+1) % mod;
                     midCount = 0;
                 }
                 else if(count != 0 && count % oneCount == 0 && count < 3*oneCount){

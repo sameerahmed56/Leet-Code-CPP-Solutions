@@ -19,7 +19,7 @@ public:
                     ans = ans * (midCount+1) % mod;
                     midCount = 0;
                 }
-                else if(count != 0 && count % oneCount == 0 && count < 3*oneCount){
+                else if(count != 0 && count % oneCount == 0){
                     midCount++;
                 }
             }   

@@ -12,7 +12,7 @@ public:
         int zeroCount = 0, oneCount = 0, n = str.size(), ans = 0;
         for(char c: str){
             c=='0' ? zeroCount++ : oneCount++;
-            if(zeroCount > 0 && zeroCount == oneCount){
+            if(zeroCount == oneCount){
                 ans++;
                 zeroCount = 0;
                 oneCount = 0;

@@ -13,8 +13,6 @@ class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans;
-        vector<int> ds;
-        vector<bool> freq(nums.size(), false);
         recurPermute(nums,ans,0);
         return ans;
     }

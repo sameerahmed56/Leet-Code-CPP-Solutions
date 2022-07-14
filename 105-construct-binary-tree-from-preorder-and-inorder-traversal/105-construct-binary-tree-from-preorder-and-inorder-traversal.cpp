@@ -26,7 +26,6 @@ public:
         for(int i=0; i<n; i++){
             mp[inorder[i]] = i;
         }
-        TreeNode* root = new TreeNode(preorder[0]);
         
         return constructTree(preorder,0,n-1,ind,mp);
     }

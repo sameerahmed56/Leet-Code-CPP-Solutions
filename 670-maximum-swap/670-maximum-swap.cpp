@@ -1,22 +1,27 @@
 class Solution {
 public:
     int maximumSwap(int num) {
-        string str = to_string(num);
-        int n = str.size(), currMax = INT_MIN, currMaxPos = -1;
-        vector<pair<int,int>> maxTillPos(n);
-        for(int i=n-1; i>=0; i--){
-            if(str[i] - '0' > currMax){
-                currMax = str[i]-'0';
-                currMaxPos = i; 
+        string numstr = to_string(num);
+
+        int maxidx = -1; int maxdigit = -1;
+        int leftidx = -1; int rightidx = -1;        
+
+        for (int i = numstr.size() - 1; i >= 0; --i) {
+            if (numstr[i] > maxdigit) {
+                maxdigit = numstr[i];
+                maxidx = i;
+                continue;
             }
-            maxTillPos[i] = {currMaxPos,currMax};
-        }
-        for(int i=0; i<n; i++){
-            if(maxTillPos[i].first != i && maxTillPos[i].second != str[i]-'0'){
-                swap(str[i],str[maxTillPos[i].first]);
-                break;
+            if (numstr[i] < maxdigit) {
+                leftidx = i;
+                rightidx = maxidx;
             }
         }
-        return stoi(str);
+
+        if (leftidx == -1) return num;
+
+        std::swap(numstr[leftidx], numstr[rightidx]);
+
+        return stoi(numstr);
     }
 };

@@ -1,24 +1,24 @@
 class Solution {
 public:
-    int searchLeft(vector<int>& nums, int target, int l, int r){
+    void searchLeft(vector<int>& nums, int target, int l, int r, vector<int>& ans){
         while(r>=l){
             int mid = l + (r-l)/2;
             if(nums[mid] == target){
+                ans[0] = mid;
                 r = mid-1;
             }
             else l = mid+1;
         }
-        return r+1;
     }
-    int searchRight(vector<int>& nums, int target, int l, int r){
+    void searchRight(vector<int>& nums, int target, int l, int r, vector<int>& ans){
         while(r>=l){
             int mid = l + (r-l)/2;
             if(nums[mid] == target){
+                ans[1] = mid;
                 l = mid+1;
             }
             else r = mid-1;
         }
-        return l-1;
     }
     vector<int> searchRange(vector<int>& nums, int target) {
         vector<int> ans(2,-1);
@@ -27,8 +27,10 @@ public:
         while(l<=r){
             int mid = l + (r-l)/2;
             if(nums[mid] == target){
-                ans[0] = searchLeft(nums,target,l,mid-1);
-                ans[1] = searchRight(nums,target,mid+1,r);
+                ans[0] = mid;
+                ans[1] = mid;
+                searchLeft(nums,target,l,mid-1, ans);
+                searchRight(nums,target,mid+1,r, ans);
                 return ans;
             } 
             if(nums[mid]>target) r= mid-1;

@@ -18,15 +18,14 @@ public:
                 }
                 else{
                     ans.push_back({nums[i], nums[front], nums[back]});
-                    int front_value = nums[front];
-                    int back_value = nums[back];
+                    int front_value = nums[front], back_value = nums[back];
                     while(front<=back && nums[front] == front_value) front++;
                     while(front<=back && nums[back] == back_value) back--;
 
                 }
-                while(i+1<n && nums[i+1] == -target){
-                    i++;
-                }
+            }
+            while(i+1<n && nums[i+1] == nums[i]){
+                i++;
             }
             
         }

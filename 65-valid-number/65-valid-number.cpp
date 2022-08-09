@@ -6,8 +6,7 @@ public:
         if(n==0) return false;
         for(char c: s){ 
             if(c == '+' || c == '-'){
-                if(digit || sign) return false;
-                if(decimal && !expo) return false;
+                if(digit || sign || decimal) return false;
                 sign = 1;
             }
             else if(c >= '0' && c<= '9'){
@@ -21,6 +20,7 @@ public:
                 if(!digit || expo) return false;
                 sign = 0;
                 digit = 0;
+                decimal = 0;
                 expo = 1;
             }
             else return false;

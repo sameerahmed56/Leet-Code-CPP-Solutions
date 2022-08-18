@@ -1,34 +1,11 @@
 class Solution {
 public:
-    int countMaxOne(vector<int>& nums, int k, int i){
-        int rem = k, count = 0, ans = 0, n = nums.size();
-        while(i<n){
-            if(nums[i] == 0){
-                if(rem > 0){
-                    rem--;
-                    count++;
-                }
-                else{
-                    ans = max(ans,count+ rem);
-                    i = n;
-                }
-            }
-            else{
-                count++;
-            }
-            i++;
+    int longestOnes(vector<int>& A, int K) {
+        int i = 0, j;
+        for (j = 0; j < A.size(); ++j) {
+            if (A[j] == 0) K--;
+            if (K < 0 && A[i++] == 0) K++;
         }
-        ans = max(ans,count+ rem);
-        return  ans;
-    }
-    int longestOnes(vector<int>& nums, int k) {
-        int n = nums.size(), i = 0, ans = k;
-        while(i < n){
-            if(nums[i] == 1 && (i == 0 || nums[i-1] == 0)){
-                ans = max(countMaxOne(nums,k,i), ans);
-            }
-            i++;
-        }
-        return min(ans,n);
+        return j-i;
     }
 };

@@ -24,7 +24,6 @@ public:
         }
         while(sz == m){
             if(checkChar(arr,cur)){
-                cout << cur << " ";
                 return true;
             }
             cur = cur << 1;

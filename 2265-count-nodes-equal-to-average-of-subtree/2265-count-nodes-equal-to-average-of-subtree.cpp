@@ -16,10 +16,11 @@ public:
         pair<int, int> left = average(root->left,ans);
         pair<int, int> right = average(root->right,ans);
         int count = left.second + right.second + 1;
-        if((left.first + right.first + root->val)/count == root->val){
+        int sum = left.first + right.first + root->val;
+        if(sum/count == root->val){
             ans++;
         }
-        return {left.first + right.first + root->val, left.second + right.second + 1};
+        return {sum,count};
     }
     int averageOfSubtree(TreeNode* root) {
         int ans = 0;

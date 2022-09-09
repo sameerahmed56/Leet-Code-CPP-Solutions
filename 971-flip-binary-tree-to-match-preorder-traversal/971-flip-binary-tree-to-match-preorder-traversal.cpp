@@ -11,25 +11,18 @@
  */
 class Solution {
 public:
-    vector<int> ans;
-    vector<int> flipMatchVoyage(TreeNode* root, vector<int>& voyage) {
-        vector<int> np = {-1};
-        int i = 0;
-        return solve(root,voyage,i) ? ans : np;
+    vector<int> flips;
+    bool traverse(TreeNode* root, vector<int>& voyage, int &pos) {
+      if (root == nullptr) return true;
+      if (root->val != voyage[pos++]) return false;
+      auto l = root->left, r = root->right;
+      if (l != nullptr && l->val != voyage[pos]) {
+        flips.push_back(root->val);
+        swap(l, r);
+      }
+      return traverse(l, voyage, pos) && traverse(r, voyage, pos);
     }
-    bool solve(TreeNode* root, vector<int>& voyage, int& i) {
-        if(!root ) return true;
-        if(i >= voyage.size() || voyage[i] != root->val) return false;
-        i++;
-        bool left = solve(root->left, voyage, i);
-        if(!left){
-            TreeNode* temp = root->left;
-            root->left = root->right;
-            root->right = temp;
-            ans.push_back(root->val);
-            left = solve(root->left, voyage, i);
-        }
-        bool right = solve(root->right, voyage, i);
-        return left && right;
+    vector<int> flipMatchVoyage(TreeNode* root, vector<int>& voyage, int pos = 0) {
+      return traverse(root, voyage, pos) ? flips : vector<int>() = { -1 };
     }
 };

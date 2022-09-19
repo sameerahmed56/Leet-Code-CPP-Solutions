@@ -16,16 +16,12 @@ public:
                     file = s + x;
                     x = "";
                 }
-                else if(path[i][j] == ')'){
-                    mp[x].push_back(file);
-                }
+                else if(path[i][j] == ')') mp[x].push_back(file);
                 else if(path[i][j] == ' '){
                     x ="";
                     file = "";
                 }
-                else{
-                    x += path[i][j];
-                }
+                else x += path[i][j];
                 j++;
             }
         }

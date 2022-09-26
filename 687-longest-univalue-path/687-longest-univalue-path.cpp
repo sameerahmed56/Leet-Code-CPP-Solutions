@@ -8,10 +8,7 @@ public:
     }
 private:
     int solve(TreeNode* root, int prev, int count){
-        if(!root || root->val != prev) return count;
-        // cout << root->val;
-        int left = solve(root->left,prev, count+1);
-        int right = solve(root->right,prev, count+1);        
-        return max(left,right);
+        if(!root || root->val != prev) return count;       
+        return max(solve(root->left,prev, count+1),solve(root->right,prev, count+1));
     }
 };
